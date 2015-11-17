@@ -8,9 +8,14 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController,UITextFieldDelegate {
 
     @IBOutlet weak var detailDescriptionLabel: UILabel!
+    @IBOutlet var tweetTextField : UITextField!
+    @IBOutlet var tweetDatePicker : UIDatePicker!
+    @IBOutlet var repeatSwitch : UISwitch!
+    @IBOutlet var daysSegment : UISegmentedControl!
+    
 
 
     var detailItem: AnyObject? {
@@ -33,6 +38,16 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.configureView()
+        tweetTextField.delegate = self
+        
+        tweetDatePicker.datePickerMode = UIDatePickerMode.DateAndTime
+        tweetDatePicker.minimumDate = NSDate()
+        tweetDatePicker.maximumDate = NSDate(timeIntervalSinceNow: 365 * 24 * 60 * 60)
+        
+        repeatSwitch.on = false
+        repeatSwitch.frame.origin.x = self.view.center.x
+        
+        daysSegment.hidden = true
     }
 
     override func didReceiveMemoryWarning() {

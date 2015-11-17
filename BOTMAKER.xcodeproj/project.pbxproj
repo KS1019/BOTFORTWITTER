@@ -14,6 +14,10 @@
 		7CCD359B1BF78BB10097E830 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CCD359A1BF78BB10097E830 /* Images.xcassets */; };
 		7CCD359E1BF78BB10097E830 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CCD359C1BF78BB10097E830 /* LaunchScreen.xib */; };
 		7CCD35AA1BF78BB10097E830 /* BOTMAKERTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCD35A91BF78BB10097E830 /* BOTMAKERTests.swift */; };
+		7CCD35B81BF78CEE0097E830 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CCD35B41BF78CEE0097E830 /* Fabric.framework */; };
+		7CCD35B91BF78CEE0097E830 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CCD35B51BF78CEE0097E830 /* TwitterKit.framework */; };
+		7CCD35BA1BF78CEE0097E830 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7CCD35B61BF78CEE0097E830 /* TwitterKitResources.bundle */; };
+		7CCD35BB1BF78CEE0097E830 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CCD35B71BF78CEE0097E830 /* TwitterCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +42,10 @@
 		7CCD35A31BF78BB10097E830 /* BOTMAKERTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BOTMAKERTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CCD35A81BF78BB10097E830 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CCD35A91BF78BB10097E830 /* BOTMAKERTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOTMAKERTests.swift; sourceTree = "<group>"; };
+		7CCD35B41BF78CEE0097E830 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		7CCD35B51BF78CEE0097E830 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
+		7CCD35B61BF78CEE0097E830 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TwitterKitResources.bundle; sourceTree = "<group>"; };
+		7CCD35B71BF78CEE0097E830 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +53,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CCD35B81BF78CEE0097E830 /* Fabric.framework in Frameworks */,
+				7CCD35BB1BF78CEE0097E830 /* TwitterCore.framework in Frameworks */,
+				7CCD35B91BF78CEE0097E830 /* TwitterKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +96,10 @@
 				7CCD35971BF78BB10097E830 /* Main.storyboard */,
 				7CCD359A1BF78BB10097E830 /* Images.xcassets */,
 				7CCD359C1BF78BB10097E830 /* LaunchScreen.xib */,
+				7CCD35B41BF78CEE0097E830 /* Fabric.framework */,
+				7CCD35B51BF78CEE0097E830 /* TwitterKit.framework */,
+				7CCD35B61BF78CEE0097E830 /* TwitterKitResources.bundle */,
+				7CCD35B71BF78CEE0097E830 /* TwitterCore.framework */,
 				7CCD358F1BF78BB10097E830 /* Supporting Files */,
 			);
 			path = BOTMAKER;
@@ -125,6 +140,7 @@
 				7CCD35881BF78BB10097E830 /* Sources */,
 				7CCD35891BF78BB10097E830 /* Frameworks */,
 				7CCD358A1BF78BB10097E830 /* Resources */,
+				7CCD35B31BF78CBD0097E830 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -195,6 +211,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CCD35BA1BF78CEE0097E830 /* TwitterKitResources.bundle in Resources */,
 				7CCD35991BF78BB10097E830 /* Main.storyboard in Resources */,
 				7CCD359E1BF78BB10097E830 /* LaunchScreen.xib in Resources */,
 				7CCD359B1BF78BB10097E830 /* Images.xcassets in Resources */,
@@ -209,6 +226,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7CCD35B31BF78CBD0097E830 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 26d6ce49ab90f31d8d4c4eb4a96ec01e8bdbddcf f9d474582c6c8baab4dd71fe5c68b09986180f7f5bb00b26894c215ceaab9b62";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7CCD35881BF78BB10097E830 /* Sources */ = {
@@ -344,6 +377,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/BOTMAKER",
+				);
 				INFOPLIST_FILE = BOTMAKER/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -354,6 +391,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/BOTMAKER",
+				);
 				INFOPLIST_FILE = BOTMAKER/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
