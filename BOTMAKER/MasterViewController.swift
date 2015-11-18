@@ -12,7 +12,8 @@ class MasterViewController: UITableViewController {
 
     var objects = [AnyObject]()
 
-
+    @IBOutlet var addButton : UIBarButtonItem!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -22,7 +23,7 @@ class MasterViewController: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
 
-//        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
+         addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "segueToAddView")
 //        self.navigationItem.rightBarButtonItem = addButton
     }
 
@@ -31,11 +32,6 @@ class MasterViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-//    func insertNewObject(sender: AnyObject) {
-//        objects.insert(NSDate(), atIndex: 0)
-//        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-//        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-//    }
 
     // MARK: - Segues
 
@@ -46,6 +42,11 @@ class MasterViewController: UITableViewController {
             (segue.destinationViewController as! DetailViewController).detailItem = object
             }
         }
+    }
+    
+    func segueToAddView() {
+        println("segueToAddView is called")
+        
     }
 
     // MARK: - Table View

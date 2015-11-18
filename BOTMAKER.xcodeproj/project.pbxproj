@@ -18,6 +18,7 @@
 		7CCD35B91BF78CEE0097E830 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CCD35B51BF78CEE0097E830 /* TwitterKit.framework */; };
 		7CCD35BA1BF78CEE0097E830 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7CCD35B61BF78CEE0097E830 /* TwitterKitResources.bundle */; };
 		7CCD35BB1BF78CEE0097E830 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CCD35B71BF78CEE0097E830 /* TwitterCore.framework */; };
+		7CCD35BD1BFCB7550097E830 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCD35BC1BFCB7550097E830 /* AddViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		7CCD35B51BF78CEE0097E830 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
 		7CCD35B61BF78CEE0097E830 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TwitterKitResources.bundle; sourceTree = "<group>"; };
 		7CCD35B71BF78CEE0097E830 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
+		7CCD35BC1BFCB7550097E830 /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				7CCD35911BF78BB10097E830 /* AppDelegate.swift */,
 				7CCD35931BF78BB10097E830 /* MasterViewController.swift */,
 				7CCD35951BF78BB10097E830 /* DetailViewController.swift */,
+				7CCD35BC1BFCB7550097E830 /* AddViewController.swift */,
 				7CCD35971BF78BB10097E830 /* Main.storyboard */,
 				7CCD359A1BF78BB10097E830 /* Images.xcassets */,
 				7CCD359C1BF78BB10097E830 /* LaunchScreen.xib */,
@@ -250,6 +253,7 @@
 			files = (
 				7CCD35961BF78BB10097E830 /* DetailViewController.swift in Sources */,
 				7CCD35941BF78BB10097E830 /* MasterViewController.swift in Sources */,
+				7CCD35BD1BFCB7550097E830 /* AddViewController.swift in Sources */,
 				7CCD35921BF78BB10097E830 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -454,6 +458,7 @@
 				7CCD35AF1BF78BB10097E830 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7CCD35B01BF78BB10097E830 /* Build configuration list for PBXNativeTarget "BOTMAKERTests" */ = {
 			isa = XCConfigurationList;
@@ -462,6 +467,7 @@
 				7CCD35B21BF78BB10097E830 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

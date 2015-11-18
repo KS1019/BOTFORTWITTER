@@ -60,14 +60,17 @@
                     <navigationItem key="navigationItem" title="Master" id="tQt-TN-PWz">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="NYZ-x3-LrD">
                             <connections>
-                                <segue destination="1su-Zd-3mx" kind="modal" id="R7E-AZ-8yQ"/>
+                                <segue destination="1su-Zd-3mx" kind="presentation" identifier="toAddView" id="0nf-9T-gKX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addButton" destination="NYZ-x3-LrD" id="Yq5-FG-Kk0"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Cn-md-YlS" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="446.5" y="146.5"/>
+            <point key="canvasLocation" x="326.5" y="63.5"/>
         </scene>
         <!--Detail-->
         <scene sceneID="Cn3-H9-jdl">
@@ -120,12 +123,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrm-kH-fPn" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1342.5" y="63.5"/>
+            <point key="canvasLocation" x="844.5" y="63.5"/>
         </scene>
         <!--Add-->
         <scene sceneID="VYL-kl-sL2">
             <objects>
-                <viewController title="Add" id="1su-Zd-3mx" sceneMemberID="viewController">
+                <viewController title="Add" id="1su-Zd-3mx" customClass="AddViewController" customModule="BOTMAKER" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ui5-qr-d15"/>
                         <viewControllerLayoutGuide type="bottom" id="j1I-En-7IP"/>
@@ -135,18 +138,12 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1hk-DV-xhQ">
-                                <rect key="frame" x="20" y="82" width="335" height="216"/>
+                                <rect key="frame" x="20" y="47" width="335" height="216"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="yeJ-VW-wJ8">
-                                <rect key="frame" x="20" y="330" width="335" height="228"/>
-                                <date key="date" timeIntervalSinceReferenceDate="469210652.96468502">
-                                    <!--2015-11-14 16:17:32 +0000-->
-                                </date>
-                            </datePicker>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2Tz-Nn-ybE">
-                                <rect key="frame" x="77" y="596" width="278" height="29"/>
+                                <rect key="frame" x="85" y="567" width="270" height="29"/>
                                 <segments>
                                     <segment title="Sun"/>
                                     <segment title="Mon"/>
@@ -158,23 +155,29 @@
                                 </segments>
                             </segmentedControl>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vJQ-DM-QWl">
-                                <rect key="frame" x="20" y="594" width="51" height="31"/>
+                                <rect key="frame" x="20" y="565" width="51" height="31"/>
                             </switch>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NMD-2Z-Fq9">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem style="done" systemItem="done" id="wn7-f3-1pm"/>
+                                </items>
+                            </toolbar>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="yeJ-VW-wJ8">
+                                <rect key="frame" x="20" y="297" width="335" height="249"/>
+                                <date key="date" timeIntervalSinceReferenceDate="469210652.96468502">
+                                    <!--2015-11-14 16:17:32 +0000-->
+                                </date>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Detail" id="HnY-ID-apU"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <connections>
-                        <outlet property="daysSegment" destination="2Tz-Nn-ybE" id="Ndm-e4-2Vz"/>
-                        <outlet property="repeatSwitch" destination="vJQ-DM-QWl" id="7xO-J7-jSe"/>
-                        <outlet property="tweetDatePicker" destination="yeJ-VW-wJ8" id="JlH-WG-ier"/>
-                        <outlet property="tweetTextField" destination="1hk-DV-xhQ" id="PGj-xA-Nvc"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sL6-Cm-UOs" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1089.5" y="-283.5"/>
+            <point key="canvasLocation" x="326.5" y="-699.5"/>
         </scene>
     </scenes>
 </document>
