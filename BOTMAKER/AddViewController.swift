@@ -26,6 +26,9 @@ class AddViewController: UIViewController {
     }
     
 
+    @IBAction func done(){
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 

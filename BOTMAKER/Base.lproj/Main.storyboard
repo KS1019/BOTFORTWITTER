@@ -160,7 +160,11 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NMD-2Z-Fq9">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
-                                    <barButtonItem style="done" systemItem="done" id="wn7-f3-1pm"/>
+                                    <barButtonItem style="done" systemItem="done" id="wn7-f3-1pm">
+                                        <connections>
+                                            <action selector="done" destination="1su-Zd-3mx" id="8l0-I4-JuJ"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="yeJ-VW-wJ8">
