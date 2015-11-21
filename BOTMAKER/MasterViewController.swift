@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TwitterKit
 
 class MasterViewController: UITableViewController {
 
@@ -25,6 +26,7 @@ class MasterViewController: UITableViewController {
 
          addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "segueToAddView")
 //        self.navigationItem.rightBarButtonItem = addButton
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,6 +34,9 @@ class MasterViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    override func viewDidAppear(animated: Bool) {
+        self.login()
+    }
 
     // MARK: - Segues
 
@@ -80,6 +85,40 @@ class MasterViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
+    
+// MARK: -Login
+    
+    func login (){
+        //        let sessionStore = Twitter.sharedInstance().sessionStore
+        //        let lastSession = sessionStore.session
+        let userDefaultOfSession = NSUserDefaults.standardUserDefaults()
+        
+        
+        if  self.isLogin() {
+            let userSession = NSKeyedUnarchiver.unarchiveObjectWithData(userDefaultOfSession.objectForKey("USERSESSION") as! NSData) as! TWTRSession
+            println("Segue is failed \(userSession.userName)")
+            //self.label.text = "Signed as \(userSession.userName)"
+            println("Signed as \(userSession.userName)")
+            //userID = userSession.userID
+        }else{
+            self.performSegueWithIdentifier("toLogin", sender: nil)
+            println("Segue is successful ")
+        }
+        
+        
+    }
+    
+    func isLogin() -> Bool{
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        let loginStatus: AnyObject? = userDefaults.objectForKey("USERSESSION")
+        if loginStatus != nil {
+            return true
+            
+        }else{
+            return false
+        }
+    }
+
 
 
 }

@@ -18,7 +18,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eq9-QA-ai8" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-148" y="64"/>
+            <point key="canvasLocation" x="-432.5" y="63.5"/>
         </scene>
         <!--Master-->
         <scene sceneID="VgW-fR-Quf">
@@ -66,11 +66,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="NYZ-x3-LrD" id="Yq5-FG-Kk0"/>
+                        <segue destination="L0Q-dI-zwW" kind="presentation" identifier="toLogin" id="pYF-p2-SLQ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Cn-md-YlS" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="326.5" y="63.5"/>
+            <point key="canvasLocation" x="119.5" y="63.5"/>
         </scene>
         <!--Detail-->
         <scene sceneID="Cn3-H9-jdl">
@@ -125,6 +126,25 @@
             </objects>
             <point key="canvasLocation" x="844.5" y="63.5"/>
         </scene>
+        <!--Login View Controller-->
+        <scene sceneID="LCn-xc-BA3">
+            <objects>
+                <viewController id="L0Q-dI-zwW" customClass="LoginViewController" customModule="BOTMAKER" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qAi-9p-yll"/>
+                        <viewControllerLayoutGuide type="bottom" id="XQm-Fu-fAR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Va9-wV-N5Y">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MJ2-jQ-k3x" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-92.5" y="-689.5"/>
+        </scene>
         <!--Add-->
         <scene sceneID="VYL-kl-sL2">
             <objects>
@@ -173,7 +193,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sL6-Cm-UOs" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="326.5" y="-699.5"/>
+            <point key="canvasLocation" x="308.5" y="-689.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Cpy-31-1zC">
@@ -238,7 +258,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PWC-cm-Iu8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="743.5" y="-768.5"/>
+            <point key="canvasLocation" x="844.5" y="-699.5"/>
         </scene>
     </scenes>
 </document>
