@@ -8,10 +8,11 @@
 
 import UIKit
 
-class AddViewController: UIViewController {
+class AddViewController: UIViewController ,UITextViewDelegate{
 
     
-    @IBOutlet var doneButton : UIBarButtonItem!
+
+    @IBOutlet var tweetTextView : UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,47 @@ class AddViewController: UIViewController {
 
     @IBAction func done(){
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // MARK: -TextView
+    
+    func textViewShouldBeginEditing(textView: UITextView) -> Bool {
+        println("textViewShouldBeginEditing : \(textView.text)");
+        return true
+    }
+
+    func textViewShouldEndEditing(textView: UITextView) -> Bool {
+        println("textViewShouldEndEditing : \(textView.text)");
+        
+        //文字数制限
+        let maxLength : Int = 140
+        
+        var str = textView.text
+        if count("\(str)") <= maxLength {
+            return true
+        }else{
+            tweetTextView.editable = false
+        
+        return false
+   
+        }
+        
+    }
+    
+    func textViewDidChange(textView: UITextView) {
+        println("textViewDidChange : \(textView.text)");
+        
+        //文字数制限
+        let maxLength : Int = 140
+        
+        var str = textView.text
+        if count("\(str)") <= maxLength {
+
+        }else{
+            tweetTextView.editable = false
+            
+    
+        }
     }
     /*
     // MARK: - Navigation

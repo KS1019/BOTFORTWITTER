@@ -56,8 +56,5 @@ class LoginViewController: UIViewController {
     }
     */
     
-    func login() {
-        
-    }
 
 }
