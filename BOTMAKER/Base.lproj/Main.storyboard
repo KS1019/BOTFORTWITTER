@@ -73,6 +73,25 @@
             </objects>
             <point key="canvasLocation" x="119.5" y="63.5"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="7Sb-Ko-PLX">
+            <objects>
+                <viewController id="H9v-sK-Smp" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hOB-KE-7eF"/>
+                        <viewControllerLayoutGuide type="bottom" id="MHH-iN-Tkj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hIR-8e-eGg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bTL-S8-mJY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="844.5" y="-689.5"/>
+        </scene>
         <!--Detail-->
         <scene sceneID="Cn3-H9-jdl">
             <objects>
@@ -168,29 +187,46 @@
                                 </items>
                             </toolbar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tweet Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9pe-eo-XtY">
-                                <rect key="frame" x="20" y="396" width="87" height="21"/>
+                                <rect key="frame" x="20" y="374" width="87" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.0078431377190000002" green="0.65882354970000001" blue="0.9529411793" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="yeJ-VW-wJ8">
-                                <rect key="frame" x="20" y="425" width="335" height="174"/>
+                                <rect key="frame" x="20" y="403" width="335" height="174"/>
                                 <date key="date" timeIntervalSinceReferenceDate="469210652.96468502">
                                     <!--2015-11-14 16:17:32 +0000-->
                                 </date>
                                 <locale key="locale" localeIdentifier="ja_JP"/>
                             </datePicker>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P4k-Nh-6We">
-                                <rect key="frame" x="32" y="43" width="311" height="238"/>
+                                <rect key="frame" x="32" y="99" width="311" height="222"/>
                                 <color key="backgroundColor" red="0.0078431377190000002" green="0.65882354970000001" blue="0.9529411793" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Daily Tweet" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cj-AT-Hfm">
+                                <rect key="frame" x="144" y="45" width="87" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.0078431377190000002" green="0.65882354970000001" blue="0.9529411793" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="-------------" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wjx-Jf-cMQ">
+                                <rect key="frame" x="256" y="329" width="87" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.0078431377190000002" green="0.65882354970000001" blue="0.9529411793" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Detail" id="HnY-ID-apU"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="datePickerOfTweet" destination="yeJ-VW-wJ8" id="Gkf-Tl-RQy"/>
+                        <outlet property="labelOfCountOfText" destination="Wjx-Jf-cMQ" id="gfq-w9-k9o"/>
+                        <outlet property="tweetTextView" destination="P4k-Nh-6We" id="Sds-9N-kEa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sL6-Cm-UOs" sceneMemberID="firstResponder"/>
             </objects>
@@ -259,7 +295,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PWC-cm-Iu8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="844.5" y="-699.5"/>
+            <point key="canvasLocation" x="119.5" y="822.5"/>
         </scene>
     </scenes>
 </document>

@@ -36,6 +36,8 @@ class MasterViewController: UITableViewController {
 
     override func viewDidAppear(animated: Bool) {
         self.login()
+        let tweetUserDefaultsForCell = NSUserDefaults.standardUserDefaults()
+        
     }
 
     // MARK: - Segues

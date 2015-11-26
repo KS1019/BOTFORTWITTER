@@ -8,15 +8,20 @@
 
 import UIKit
 
-class AddViewController: UIViewController ,UITextViewDelegate{
+class AddViewController: UIViewController ,UITextViewDelegate {
 
     
 
     @IBOutlet var tweetTextView : UITextView!
+    @IBOutlet var labelOfCountOfText : UILabel!
+    @IBOutlet var datePickerOfTweet : UIDatePicker!
+    
+    var tweetDate : String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        tweetTextView.delegate = self
         
         // Do any additional setup after loading the view.
     }
@@ -28,8 +33,17 @@ class AddViewController: UIViewController ,UITextViewDelegate{
     
 
     @IBAction func done(){
+        let myDateFormatter: NSDateFormatter = NSDateFormatter()
+        myDateFormatter.dateFormat = "hh:mm"
+        let mySelectedDate: NSString = myDateFormatter.stringFromDate(datePickerOfTweet.date)
+        tweetDate = mySelectedDate as String
+        
+        let tweetUserDefaults = NSUserDefaults.standardUserDefaults()
+        tweetUserDefaults.setObject(tweetTextView.text, forKey:"TWEETTEXT")
+        tweetUserDefaults.setObject(tweetDate, forKey:"TWEETDATE")
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
     
     // MARK: -TextView
     
@@ -48,9 +62,8 @@ class AddViewController: UIViewController ,UITextViewDelegate{
         if count("\(str)") <= maxLength {
             return true
         }else{
-            tweetTextView.editable = false
-        
-        return false
+            
+            return false
    
         }
         
@@ -63,14 +76,28 @@ class AddViewController: UIViewController ,UITextViewDelegate{
         let maxLength : Int = 140
         
         var str = textView.text
-        if count("\(str)") <= maxLength {
-
-        }else{
-            tweetTextView.editable = false
-            
-    
+        
+        var countOfCharacter : Int = maxLength - count("\(str)")
+        
+        if countOfCharacter >= 0 {
+            labelOfCountOfText.textColor = UIColor.blueColor()
+            labelOfCountOfText.text = String(countOfCharacter)
+        }else if countOfCharacter < 0 {
+            labelOfCountOfText.textColor = UIColor.redColor()
+            labelOfCountOfText.text = String(countOfCharacter)
         }
+    
     }
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange,
+        replacementText text: String) -> Bool {
+            if text == "\n" {
+                textView.resignFirstResponder() //キーボードを閉じる
+                return false
+            }
+            return true
+    }
+    
     /*
     // MARK: - Navigation
 
