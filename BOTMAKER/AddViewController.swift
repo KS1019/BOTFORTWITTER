@@ -18,6 +18,9 @@ class AddViewController: UIViewController ,UITextViewDelegate {
     
     var tweetDate : String!
     
+    var tweetTexts = [String]()
+    var tweetDates = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,14 +36,20 @@ class AddViewController: UIViewController ,UITextViewDelegate {
     
 
     @IBAction func done(){
+        if (tweetTextView.text != nil) {
         let myDateFormatter: NSDateFormatter = NSDateFormatter()
         myDateFormatter.dateFormat = "hh:mm"
         let mySelectedDate: NSString = myDateFormatter.stringFromDate(datePickerOfTweet.date)
         tweetDate = mySelectedDate as String
         
+        tweetTexts.append(tweetTextView.text)
+        tweetDates.append(tweetDate)
+        
         let tweetUserDefaults = NSUserDefaults.standardUserDefaults()
-        tweetUserDefaults.setObject(tweetTextView.text, forKey:"TWEETTEXT")
-        tweetUserDefaults.setObject(tweetDate, forKey:"TWEETDATE")
+        tweetUserDefaults.setObject(tweetTexts, forKey:"TWEETTEXTS")
+        tweetUserDefaults.setObject(tweetDates, forKey:"TWEETDATES")
+        tweetUserDefaults.synchronize()
+        }
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     

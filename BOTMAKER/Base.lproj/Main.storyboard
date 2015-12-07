@@ -109,35 +109,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="3XC-kK-ceO">
-                                <rect key="frame" x="20" y="330" width="335" height="228"/>
-                                <date key="date" timeIntervalSinceReferenceDate="469210652.96468502">
-                                    <!--2015-11-14 16:17:32 +0000-->
-                                </date>
-                            </datePicker>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2H5-xF-Y55">
-                                <rect key="frame" x="77" y="596" width="278" height="29"/>
-                                <segments>
-                                    <segment title="Sun"/>
-                                    <segment title="Mon"/>
-                                    <segment title="Tue"/>
-                                    <segment title="Wed"/>
-                                    <segment title="Thu"/>
-                                    <segment title="Fri"/>
-                                    <segment title="Sat"/>
-                                </segments>
-                            </segmentedControl>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="eEL-RE-ZvL">
-                                <rect key="frame" x="20" y="594" width="51" height="31"/>
-                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Detail" id="cra-N8-TIN"/>
                     <connections>
-                        <outlet property="daysSegment" destination="2H5-xF-Y55" id="uTl-88-R4m"/>
-                        <outlet property="repeatSwitch" destination="eEL-RE-ZvL" id="piB-o9-IGS"/>
-                        <outlet property="tweetDatePicker" destination="3XC-kK-ceO" id="c9f-i2-CMQ"/>
                         <outlet property="tweetTextField" destination="q4v-m5-ZA0" id="tDx-kj-nW1"/>
                     </connections>
                 </viewController>

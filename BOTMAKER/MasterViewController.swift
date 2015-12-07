@@ -12,6 +12,8 @@ import TwitterKit
 class MasterViewController: UITableViewController {
 
     var objects = [AnyObject]()
+    var arrayOfTweetTexts:AnyObject = []
+    var arrayOfTweetDates:AnyObject = []
 
     @IBOutlet var addButton : UIBarButtonItem!
     
@@ -33,11 +35,17 @@ class MasterViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+
 
     override func viewDidAppear(animated: Bool) {
         self.login()
-        let tweetUserDefaultsForCell = NSUserDefaults.standardUserDefaults()
-        
+        var tweetUserDefaultsForCell:NSUserDefaults? = NSUserDefaults.standardUserDefaults()
+        if (tweetUserDefaultsForCell?.objectForKey("TWEETTEXTS") != nil) {
+         arrayOfTweetTexts = tweetUserDefaultsForCell!.objectForKey("TWEETTEXTS")!
+         arrayOfTweetDates = tweetUserDefaultsForCell!.objectForKey("TWEETDATES")!
+        self.tableView.reloadData()
+        }
     }
 
     // MARK: - Segues
@@ -45,7 +53,7 @@ class MasterViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow() {
-                let object = objects[indexPath.row] as! NSDate
+                let object = arrayOfTweetDates[indexPath.row] as! NSDate
             (segue.destinationViewController as! DetailViewController).detailItem = object
             }
         }
@@ -63,14 +71,14 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count
+        return arrayOfTweetTexts.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
 
-        let object = objects[indexPath.row] as! NSDate
-        cell.textLabel!.text = object.description
+        let object = arrayOfTweetTexts[indexPath.row] as! String
+        cell.textLabel!.text = object
         return cell
     }
 
@@ -81,7 +89,7 @@ class MasterViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            objects.removeAtIndex(indexPath.row)
+            //arrayOfTweetDates.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
