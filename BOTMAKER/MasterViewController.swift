@@ -40,7 +40,7 @@ class MasterViewController: UITableViewController {
 
     override func viewDidAppear(animated: Bool) {
         self.login()
-        var tweetUserDefaultsForCell:NSUserDefaults? = NSUserDefaults.standardUserDefaults()
+        let tweetUserDefaultsForCell:NSUserDefaults? = NSUserDefaults.standardUserDefaults()
         if (tweetUserDefaultsForCell?.objectForKey("TWEETTEXTS") != nil) {
          arrayOfTweetTexts = tweetUserDefaultsForCell!.objectForKey("TWEETTEXTS")!
          arrayOfTweetDates = tweetUserDefaultsForCell!.objectForKey("TWEETDATES")!
@@ -52,7 +52,7 @@ class MasterViewController: UITableViewController {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
-            if let indexPath = self.tableView.indexPathForSelectedRow() {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
                 let object = arrayOfTweetDates[indexPath.row] as! NSDate
             (segue.destinationViewController as! DetailViewController).detailItem = object
             }
@@ -60,7 +60,7 @@ class MasterViewController: UITableViewController {
     }
     
     func segueToAddView() {
-        println("segueToAddView is called")
+        print("segueToAddView is called")
         
     }
 
@@ -75,7 +75,7 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
 
         let object = arrayOfTweetTexts[indexPath.row] as! String
         cell.textLabel!.text = object
@@ -106,13 +106,13 @@ class MasterViewController: UITableViewController {
         
         if  self.isLogin() {
             let userSession = NSKeyedUnarchiver.unarchiveObjectWithData(userDefaultOfSession.objectForKey("USERSESSION") as! NSData) as! TWTRSession
-            println("Segue is failed \(userSession.userName)")
+            print("Segue is failed \(userSession.userName)")
             //self.label.text = "Signed as \(userSession.userName)"
-            println("Signed as \(userSession.userName)")
+            print("Signed as \(userSession.userName)")
             //userID = userSession.userID
         }else{
             self.performSegueWithIdentifier("toLogin", sender: nil)
-            println("Segue is successful ")
+            print("Segue is successful ")
         }
         
         

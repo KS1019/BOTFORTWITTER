@@ -13,7 +13,7 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("LoginView is appeared")
+        print("LoginView is appeared")
 
         
         let loginButton = TWTRLogInButton(logInCompletion: {
@@ -21,14 +21,14 @@ class LoginViewController: UIViewController {
             let userSession = session
             let userData : NSData = NSKeyedArchiver.archivedDataWithRootObject(userSession!);
             if session != nil {
-                println(session!.userName)
+                print(session!.userName)
                 // ログイン成功したら遷移する
                 let loginDefaults = NSUserDefaults.standardUserDefaults()
                 loginDefaults.setObject(userData, forKey: "USERSESSION")
                 loginDefaults.synchronize()
                 self.dismissViewControllerAnimated(false, completion: nil)
             } else {
-                println(error!.localizedDescription)
+                print(error!.localizedDescription)
                 //self.performSegueWithIdentifier("toHome", sender: nil)
             }
         })

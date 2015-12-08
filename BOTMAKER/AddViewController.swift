@@ -57,18 +57,18 @@ class AddViewController: UIViewController ,UITextViewDelegate {
     // MARK: -TextView
     
     func textViewShouldBeginEditing(textView: UITextView) -> Bool {
-        println("textViewShouldBeginEditing : \(textView.text)");
+        print("textViewShouldBeginEditing : \(textView.text)");
         return true
     }
 
     func textViewShouldEndEditing(textView: UITextView) -> Bool {
-        println("textViewShouldEndEditing : \(textView.text)");
+        print("textViewShouldEndEditing : \(textView.text)");
         
         //文字数制限
         let maxLength : Int = 140
         
-        var str = textView.text
-        if count("\(str)") <= maxLength {
+        let str = textView.text
+        if "\(str)".characters.count <= maxLength {
             return true
         }else{
             
@@ -79,14 +79,14 @@ class AddViewController: UIViewController ,UITextViewDelegate {
     }
     
     func textViewDidChange(textView: UITextView) {
-        println("textViewDidChange : \(textView.text)");
+        print("textViewDidChange : \(textView.text)");
         
         //文字数制限
         let maxLength : Int = 140
         
-        var str = textView.text
+        let str = textView.text
         
-        var countOfCharacter : Int = maxLength - count("\(str)")
+        let countOfCharacter : Int = maxLength - "\(str)".characters.count
         
         if countOfCharacter >= 0 {
             labelOfCountOfText.textColor = UIColor.blueColor()
