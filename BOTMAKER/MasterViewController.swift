@@ -24,7 +24,10 @@ class MasterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+      //  self.editButtonItem().tintColor =
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
+        
+        
 
          addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "segueToAddView")
 //        self.navigationItem.rightBarButtonItem = addButton
@@ -49,11 +52,11 @@ class MasterViewController: UITableViewController {
     }
 
     // MARK: - Segues
-
+// TODO: -repair
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                let object = arrayOfTweetDates[indexPath.row] as! NSDate
+                let object = arrayOfTweetDates[indexPath.row] as! NSDate  // TODO: -repair
             (segue.destinationViewController as! DetailViewController).detailItem = object
             }
         }
