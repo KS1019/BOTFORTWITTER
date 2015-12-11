@@ -56,8 +56,10 @@ class MasterViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                let object = arrayOfTweetDates[indexPath.row] as! NSDate  // TODO: -repair
-            (segue.destinationViewController as! DetailViewController).detailItem = object
+                let time = arrayOfTweetDates[indexPath.row] // TODO: -repair
+                let text : String = arrayOfTweetTexts[indexPath.row] as! String
+            (segue.destinationViewController as! DetailViewController).detailItem = time
+            (segue.destinationViewController as! DetailViewController).tweetText = text
             }
         }
     }
@@ -132,6 +134,8 @@ class MasterViewController: UITableViewController {
         }
     }
 
+    // TODO: I have to fix name of variable
+    
 
 
 }
