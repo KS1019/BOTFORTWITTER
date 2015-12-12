@@ -46,7 +46,7 @@ class DetailViewController: UIViewController,UITextFieldDelegate {
         if let textOfTweet = self.tweetText{
             if let textField  = self.tweetTextField {
                 textField.text = textOfTweet
-                print("@@@@")
+                print("@@")
             }
         }
     }
