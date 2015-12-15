@@ -7,6 +7,7 @@
 //
 //14/12/2015 I did not do work
 
+
 import UIKit
 
 class DetailViewController: UIViewController,UITextFieldDelegate {
@@ -56,6 +57,7 @@ class DetailViewController: UIViewController,UITextFieldDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         //self.configureView()
+        tweetTextField.enabled = false
         self.tweetTextConfigureView()
         tweetTextField.delegate = self
         print("\(tweetText)")

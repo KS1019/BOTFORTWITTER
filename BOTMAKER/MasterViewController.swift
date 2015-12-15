@@ -24,11 +24,8 @@ class MasterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-      //  self.editButtonItem().tintColor =
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
-        
-        
-
+        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.blackColor()
          addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "segueToAddView")
 //        self.navigationItem.rightBarButtonItem = addButton
         
