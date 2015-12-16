@@ -116,7 +116,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Detail" id="cra-N8-TIN"/>
+                    <navigationItem key="navigationItem" title="Tweet" id="cra-N8-TIN"/>
                     <connections>
                         <outlet property="tweetTextField" destination="q4v-m5-ZA0" id="tDx-kj-nW1"/>
                     </connections>
