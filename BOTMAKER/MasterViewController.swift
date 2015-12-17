@@ -91,10 +91,15 @@ class MasterViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            if var tweetDatesArr = arrayOfTweetTexts as? Array<AnyObject>{
-                tweetDatesArr.removeAtIndex(0)
-                arrayOfTweetTexts = tweetDatesArr
+            if var tweetTextArr = arrayOfTweetTexts as? Array<AnyObject>{
+                tweetTextArr.removeAtIndex(indexPath.row)
+                arrayOfTweetTexts = tweetTextArr
+                var tweetDatesArr = arrayOfTweetDates as? Array<AnyObject>
+                tweetDatesArr?.removeAtIndex(indexPath.row)
+                arrayOfTweetDates = tweetDatesArr!
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                
+                print("\(arrayOfTweetDates,arrayOfTweetTexts)")
             }
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
