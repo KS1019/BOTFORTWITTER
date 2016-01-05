@@ -9,9 +9,9 @@
 import UIKit
 
 class AddViewController: UIViewController ,UITextViewDelegate {
-
     
-
+    
+    
     @IBOutlet var tweetTextView : UITextView!
     @IBOutlet var labelOfCountOfText : UILabel!
     @IBOutlet var datePickerOfTweet : UIDatePicker!
@@ -28,27 +28,32 @@ class AddViewController: UIViewController ,UITextViewDelegate {
         
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     @IBAction func done(){
         if (tweetTextView.text != nil) {
-        let myDateFormatter: NSDateFormatter = NSDateFormatter()
-        myDateFormatter.dateFormat = "hh:mm"
-        let mySelectedDate: NSString = myDateFormatter.stringFromDate(datePickerOfTweet.date)
-        tweetDate = mySelectedDate as String
-        
-        tweetTexts.append(tweetTextView.text)
-        tweetDates.append(tweetDate)
-        
-        let tweetUserDefaults = NSUserDefaults.standardUserDefaults()
-        tweetUserDefaults.setObject(tweetTexts, forKey:"TWEETTEXTS")
-        tweetUserDefaults.setObject(tweetDates, forKey:"TWEETDATES")
-        tweetUserDefaults.synchronize()
+            let tweetUserDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+            tweetTexts = tweetUserDefaults.objectForKey("TWEETTEXTS") as! [String]
+            tweetDates = tweetUserDefaults.objectForKey("TWEETDATES") as! [String]
+            
+            let myDateFormatter: NSDateFormatter = NSDateFormatter()
+            myDateFormatter.dateFormat = "hh:mm"
+            let mySelectedDate: NSString = myDateFormatter.stringFromDate(datePickerOfTweet.date)
+            tweetDate = mySelectedDate as String
+            
+            print("tweetTexts -> \(tweetTexts) tweetDates -> \(tweetDates)")
+            tweetTexts.append(tweetTextView.text)
+            tweetDates.append(tweetDate)
+            print("tweetTexts -> \(tweetTexts) tweetDates -> \(tweetDates)")
+            
+            tweetUserDefaults.setObject(tweetTexts, forKey:"TWEETTEXTS")
+            tweetUserDefaults.setObject(tweetDates, forKey:"TWEETDATES")
+            tweetUserDefaults.synchronize()
         }
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -60,7 +65,7 @@ class AddViewController: UIViewController ,UITextViewDelegate {
         print("textViewShouldBeginEditing : \(textView.text)");
         return true
     }
-
+    
     func textViewShouldEndEditing(textView: UITextView) -> Bool {
         print("textViewShouldEndEditing : \(textView.text)");
         
@@ -73,7 +78,7 @@ class AddViewController: UIViewController ,UITextViewDelegate {
         }else{
             
             return false
-   
+            
         }
         
     }
@@ -95,7 +100,7 @@ class AddViewController: UIViewController ,UITextViewDelegate {
             labelOfCountOfText.textColor = UIColor.redColor()
             labelOfCountOfText.text = String(countOfCharacter)
         }
-    
+        
     }
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange,
@@ -109,12 +114,12 @@ class AddViewController: UIViewController ,UITextViewDelegate {
     
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }
