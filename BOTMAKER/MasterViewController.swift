@@ -99,6 +99,11 @@ class MasterViewController: UITableViewController {
                 arrayOfTweetDates = tweetDatesArr!
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
                 
+                let tweetsDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+                tweetsDefaults.setObject(arrayOfTweetTexts, forKey: "TWEETTEXTS")
+                tweetsDefaults.setObject(arrayOfTweetDates, forKey: "TWEETDATES")
+                tweetsDefaults.synchronize()
+                
                 print("\(arrayOfTweetDates,arrayOfTweetTexts)")
             }
         } else if editingStyle == .Insert {
