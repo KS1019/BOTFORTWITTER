@@ -62,6 +62,8 @@ class DetailViewController: UIViewController,UITextFieldDelegate {
         tweetTextField.delegate = self
         print("\(tweetText)")
         
+        self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
+        
 //        tweetDatePicker.datePickerMode = UIDatePickerMode.DateAndTime
 //        tweetDatePicker.minimumDate = NSDate()
 //        tweetDatePicker.maximumDate = NSDate(timeIntervalSinceNow: 365 * 24 * 60 * 60)

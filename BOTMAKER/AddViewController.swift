@@ -38,8 +38,8 @@ class AddViewController: UIViewController ,UITextViewDelegate {
     @IBAction func done(){
         if (tweetTextView.text != nil) {
             let tweetUserDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-            tweetTexts = tweetUserDefaults.objectForKey("TWEETTEXTS") as! [String]
-            tweetDates = tweetUserDefaults.objectForKey("TWEETDATES") as! [String]
+//            tweetTexts = tweetUserDefaults.objectForKey("TWEETTEXTS") as! [String]
+//            tweetDates = tweetUserDefaults.objectForKey("TWEETDATES") as! [String]
             
             let myDateFormatter: NSDateFormatter = NSDateFormatter()
             myDateFormatter.dateFormat = "hh:mm"
