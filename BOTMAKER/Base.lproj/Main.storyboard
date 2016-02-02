@@ -119,12 +119,16 @@
                                 <state key="normal" title="Button">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="cmposeTweet" destination="Ah7-4n-0Wa" eventType="touchUpInside" id="8Dw-5j-rX2"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Tweet" id="cra-N8-TIN"/>
                     <connections>
+                        <outlet property="tweetButton" destination="PXu-M4-qFo" id="flF-O0-pH8"/>
                         <outlet property="tweetTextField" destination="q4v-m5-ZA0" id="tDx-kj-nW1"/>
                     </connections>
                 </viewController>

@@ -85,13 +85,14 @@ class DetailViewController: UIViewController,UITextFieldDelegate {
     
     @IBAction func cmposeTweet(){
         let endPoint = "https://api.twitter.com/1.1/statuses/update.json"
-        let parameters = ["status":"\(tweetText)"]
+        let parameters = ["status":"\(tweetText!)"]
         let client : TWTRAPIClient = Twitter.sharedInstance().APIClient
         let request : NSURLRequest = client.URLRequestWithMethod("POST", URL: endPoint, parameters: parameters, error: nil)
         
         client.sendTwitterRequest(request, completion:{ (TWTRNetworkCompletion) -> Void in
             // 送信完了
         })
+        print("tweeted\(request)")
     }
     
 }
