@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C08CC231C60933300F54015 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C08CC221C60933300F54015 /* back.png */; };
 		7C80531D1C3CD5E400F6A2D4 /* Untitled.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C80531C1C3CD5E400F6A2D4 /* Untitled.png */; };
 		7CCD35921BF78BB10097E830 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCD35911BF78BB10097E830 /* AppDelegate.swift */; };
 		7CCD35941BF78BB10097E830 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCD35931BF78BB10097E830 /* MasterViewController.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7C08CC221C60933300F54015 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		7C80531C1C3CD5E400F6A2D4 /* Untitled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Untitled.png; sourceTree = "<group>"; };
 		7CCD358C1BF78BB10097E830 /* BOTMAKER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BOTMAKER.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CCD35901BF78BB10097E830 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 		7CCD35831BF78BB10097E830 = {
 			isa = PBXGroup;
 			children = (
+				7C08CC221C60933300F54015 /* back.png */,
 				7C80531C1C3CD5E400F6A2D4 /* Untitled.png */,
 				7CCD358E1BF78BB10097E830 /* BOTMAKER */,
 				7CCD35A61BF78BB10097E830 /* BOTMAKERTests */,
@@ -229,6 +232,7 @@
 			files = (
 				7CCD35BA1BF78CEE0097E830 /* TwitterKitResources.bundle in Resources */,
 				7CCD35991BF78BB10097E830 /* Main.storyboard in Resources */,
+				7C08CC231C60933300F54015 /* back.png in Resources */,
 				7CCD359E1BF78BB10097E830 /* LaunchScreen.xib in Resources */,
 				7C80531D1C3CD5E400F6A2D4 /* Untitled.png in Resources */,
 				7CCD359B1BF78BB10097E830 /* Images.xcassets in Resources */,
