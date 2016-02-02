@@ -9,11 +9,13 @@
 
 
 import UIKit
+import TwitterKit
 
 class DetailViewController: UIViewController,UITextFieldDelegate {
 
 //    @IBOutlet weak var detailDescriptionLabel: UILabel!
     @IBOutlet var tweetTextField : UITextField!
+    @IBOutlet var tweetButton : UIButton?
 //    @IBOutlet var tweetDatePicker : UIDatePicker!
 //    @IBOutlet var repeatSwitch : UISwitch!
 //    @IBOutlet var daysSegment : UISegmentedControl!
@@ -61,6 +63,7 @@ class DetailViewController: UIViewController,UITextFieldDelegate {
         self.tweetTextConfigureView()
         tweetTextField.delegate = self
         print("\(tweetText)")
+        tweetText = tweetTextField.text
         
         self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
         
@@ -78,7 +81,18 @@ class DetailViewController: UIViewController,UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
+    @IBAction func cmposeTweet(){
+        let endPoint = "https://api.twitter.com/1.1/statuses/update.json"
+        let parameters = ["status":"\(tweetText)"]
+        let client : TWTRAPIClient = Twitter.sharedInstance().APIClient
+        let request : NSURLRequest = client.URLRequestWithMethod("POST", URL: endPoint, parameters: parameters, error: nil)
+        
+        client.sendTwitterRequest(request, completion:{ (TWTRNetworkCompletion) -> Void in
+            // 送信完了
+        })
+    }
+    
 }
 
