@@ -19,8 +19,8 @@ class LoginViewController: UIViewController {
         let loginButton = TWTRLogInButton(logInCompletion: {
             session, error in
             let userSession = session
-            let userData : NSData = NSKeyedArchiver.archivedDataWithRootObject(userSession!);
             if session != nil {
+                let userData : NSData = NSKeyedArchiver.archivedDataWithRootObject(userSession!);
                 print(session!.userName)
                 // ログイン成功したら遷移する
                 let loginDefaults = NSUserDefaults.standardUserDefaults()
@@ -29,7 +29,6 @@ class LoginViewController: UIViewController {
                 self.dismissViewControllerAnimated(false, completion: nil)
             } else {
                 print(error!.localizedDescription)
-                //self.performSegueWithIdentifier("toHome", sender: nil)
             }
         })
         loginButton.center = self.view.center
