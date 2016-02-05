@@ -14,6 +14,9 @@ class MasterViewController: UITableViewController {
     var objects = [AnyObject]()
     var arrayOfTweetTexts:AnyObject = []
     var arrayOfTweetDates:AnyObject = []
+    var timer : NSTimer?
+    var arrayOfTweetTextsForTweet:[String] = []
+    var arrayOfTweetDatesForTweet:[String] = []
 
     @IBOutlet var addButton : UIBarButtonItem!
     
@@ -23,12 +26,11 @@ class MasterViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        timer = NSTimer.scheduledTimerWithTimeInterval(60, target: self, selector: "checkTiming", userInfo: nil, repeats: true)
         // Do any additional setup after loading the view, typically from a nib.
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.blackColor()
-         addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "segueToAddView")
-//        self.navigationItem.rightBarButtonItem = addButton
-        
+        addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "segueToAddView")
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,11 +42,17 @@ class MasterViewController: UITableViewController {
 
     override func viewDidAppear(animated: Bool) {
         self.login()
+        
         let tweetUserDefaultsForCell:NSUserDefaults? = NSUserDefaults.standardUserDefaults()
+        tweetUserDefaultsForCell?.addObserver(self, forKeyPath: "TWEETTEXTS", options: NSKeyValueObservingOptions.New, context: nil)
+        tweetUserDefaultsForCell?.addObserver(self, forKeyPath: "TWEETDATES", options: NSKeyValueObservingOptions.New, context: nil)
+        
         if (tweetUserDefaultsForCell?.objectForKey("TWEETTEXTS") != nil) {
+            
          arrayOfTweetTexts = tweetUserDefaultsForCell!.objectForKey("TWEETTEXTS")!
          arrayOfTweetDates = tweetUserDefaultsForCell!.objectForKey("TWEETDATES")!
         self.tableView.reloadData()
+            
         }
     }
 
@@ -121,13 +129,13 @@ class MasterViewController: UITableViewController {
         
         if  self.isLogin() {
             let userSession = NSKeyedUnarchiver.unarchiveObjectWithData(userDefaultOfSession.objectForKey("USERSESSION") as! NSData) as! TWTRSession
-            print("Segue is failed \(userSession.userName)")
+            print("It did not segue \(userSession.userName)")
             //self.label.text = "Signed as \(userSession.userName)"
             print("Signed as \(userSession.userName)")
             //userID = userSession.userID
         }else{
             self.performSegueWithIdentifier("toLogin", sender: nil)
-            print("Segue is successful ")
+            print("Segue is success")
         }
         
         
@@ -147,6 +155,29 @@ class MasterViewController: UITableViewController {
     // TODO: I have to fix name of variable
     
 
+    // MARK: NSUserDefaultsObserver
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        print("UserDefaults was changed \(object?.objectForKey(keyPath!))")
+        arrayOfTweetTextsForTweet = (object?.objectForKey("TWEETTEXTS"))! as! [String]
+        arrayOfTweetDatesForTweet = (object?.objectForKey("TWEETDATES"))! as! [String]
+    }
+    
+    // MARK: NSTimer
+    func checkTiming(){
+        print("checking Timing\(NSDate())")
+        let timeNow = NSDate()
+        
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "hh:mm"
+        let string:String = formatter.stringFromDate(timeNow)
+        
+        let index = arrayOfTweetDatesForTweet.indexOf(string)
+        
+        if index != nil {
+            let tweetText = arrayOfTweetTextsForTweet[index!]
+            print("Tweeted\(tweetText,timeNow)")
+        }
+    }
 
 }
 
