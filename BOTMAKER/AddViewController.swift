@@ -19,7 +19,7 @@ class AddViewController: UIViewController ,UITextViewDelegate {
     var tweetDate : String!
     
     var tweetTexts = [String]()
-    var tweetDates = [String]()
+    //var tweetDates = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,20 +39,20 @@ class AddViewController: UIViewController ,UITextViewDelegate {
         if (tweetTextView.text != nil) {
             let tweetUserDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
             tweetTexts = tweetUserDefaults.objectForKey("TWEETTEXTS") as! [String]
-            tweetDates = tweetUserDefaults.objectForKey("TWEETDATES") as! [String]
+            //tweetDates = tweetUserDefaults.objectForKey("TWEETDATES") as! [String]
             
-            let myDateFormatter: NSDateFormatter = NSDateFormatter()
-            myDateFormatter.dateFormat = "hh:mm"
-            let mySelectedDate: NSString = myDateFormatter.stringFromDate(datePickerOfTweet.date)
-            tweetDate = mySelectedDate as String
+//            let myDateFormatter: NSDateFormatter = NSDateFormatter()
+//            myDateFormatter.dateFormat = "hh:mm"
+//            let mySelectedDate: NSString = myDateFormatter.stringFromDate(datePickerOfTweet.date)
+//            tweetDate = mySelectedDate as String
             
-            print("tweetTexts -> \(tweetTexts) tweetDates -> \(tweetDates)")
+//            print("tweetTexts -> \(tweetTexts) tweetDates -> \(tweetDates)")
             tweetTexts.append(tweetTextView.text)
-            tweetDates.append(tweetDate)
-            print("tweetTexts -> \(tweetTexts) tweetDates -> \(tweetDates)")
+            //tweetDates.append(tweetDate)
+            print("tweetTexts -> \(tweetTexts)")
             
             tweetUserDefaults.setObject(tweetTexts, forKey:"TWEETTEXTS")
-            tweetUserDefaults.setObject(tweetDates, forKey:"TWEETDATES")
+            //tweetUserDefaults.setObject(tweetDates, forKey:"TWEETDATES")
             tweetUserDefaults.synchronize()
         }
         self.dismissViewControllerAnimated(true, completion: nil)

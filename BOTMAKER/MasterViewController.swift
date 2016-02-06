@@ -13,10 +13,10 @@ class MasterViewController: UITableViewController {
 
     var objects = [AnyObject]()
     var arrayOfTweetTexts:AnyObject = []
-    var arrayOfTweetDates:AnyObject = []
-    var timer : NSTimer?
+    //var arrayOfTweetDates:AnyObject = []
+    //var timer : NSTimer?
     var arrayOfTweetTextsForTweet:[String] = []
-    var arrayOfTweetDatesForTweet:[String] = []
+    //var arrayOfTweetDatesForTweet:[String] = []
 
     @IBOutlet var addButton : UIBarButtonItem!
     
@@ -26,10 +26,10 @@ class MasterViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        timer = NSTimer.scheduledTimerWithTimeInterval(60, target: self, selector: "checkTiming", userInfo: nil, repeats: true)
+        //timer = NSTimer.scheduledTimerWithTimeInterval(60, target: self, selector: "checkTiming", userInfo: nil, repeats: true)
         // Do any additional setup after loading the view, typically from a nib.
-        self.navigationItem.leftBarButtonItem = self.editButtonItem()
-        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.blackColor()
+        //self.navigationItem.leftBarButtonItem = self.editButtonItem()
+        //self.navigationItem.leftBarButtonItem?.tintColor = UIColor.blackColor()
         addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "segueToAddView")
     }
 
@@ -45,12 +45,12 @@ class MasterViewController: UITableViewController {
         
         let tweetUserDefaultsForCell:NSUserDefaults? = NSUserDefaults.standardUserDefaults()
         tweetUserDefaultsForCell?.addObserver(self, forKeyPath: "TWEETTEXTS", options: NSKeyValueObservingOptions.New, context: nil)
-        tweetUserDefaultsForCell?.addObserver(self, forKeyPath: "TWEETDATES", options: NSKeyValueObservingOptions.New, context: nil)
+        //tweetUserDefaultsForCell?.addObserver(self, forKeyPath: "TWEETDATES", options: NSKeyValueObservingOptions.New, context: nil)
         
         if (tweetUserDefaultsForCell?.objectForKey("TWEETTEXTS") != nil) {
             
          arrayOfTweetTexts = tweetUserDefaultsForCell!.objectForKey("TWEETTEXTS")!
-         arrayOfTweetDates = tweetUserDefaultsForCell!.objectForKey("TWEETDATES")!
+         //arrayOfTweetDates = tweetUserDefaultsForCell!.objectForKey("TWEETDATES")!
         self.tableView.reloadData()
             
         }
@@ -61,9 +61,9 @@ class MasterViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                let time = arrayOfTweetDates[indexPath.row] // TODO: -repair
+                //let time = arrayOfTweetDates[indexPath.row] // TODO: -repair
                 let text : String = arrayOfTweetTexts[indexPath.row] as! String
-            (segue.destinationViewController as! DetailViewController).detailItem = time
+            //(segue.destinationViewController as! DetailViewController).detailItem = time
             (segue.destinationViewController as! DetailViewController).tweetText = text
             }
         }
@@ -102,24 +102,24 @@ class MasterViewController: UITableViewController {
             if var tweetTextArr = arrayOfTweetTexts as? Array<AnyObject>{
                 tweetTextArr.removeAtIndex(indexPath.row)
                 arrayOfTweetTexts = tweetTextArr
-                var tweetDatesArr = arrayOfTweetDates as? Array<AnyObject>
-                tweetDatesArr?.removeAtIndex(indexPath.row)
-                arrayOfTweetDates = tweetDatesArr!
+//                var tweetDatesArr = arrayOfTweetDates as? Array<AnyObject>
+//                tweetDatesArr?.removeAtIndex(indexPath.row)
+//                arrayOfTweetDates = tweetDatesArr!
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
                 
                 let tweetsDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
                 tweetsDefaults.setObject(arrayOfTweetTexts, forKey: "TWEETTEXTS")
-                tweetsDefaults.setObject(arrayOfTweetDates, forKey: "TWEETDATES")
+                //tweetsDefaults.setObject(arrayOfTweetDates, forKey: "TWEETDATES")
                 tweetsDefaults.synchronize()
                 
-                print("\(arrayOfTweetDates,arrayOfTweetTexts)")
+                print("\(arrayOfTweetTexts)")
             }
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
     
-// MARK: -Login
+    // MARK: -Login
     
     func login (){
         //        let sessionStore = Twitter.sharedInstance().sessionStore
@@ -159,25 +159,25 @@ class MasterViewController: UITableViewController {
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         print("UserDefaults was changed \(object?.objectForKey(keyPath!))")
         arrayOfTweetTextsForTweet = (object?.objectForKey("TWEETTEXTS"))! as! [String]
-        arrayOfTweetDatesForTweet = (object?.objectForKey("TWEETDATES"))! as! [String]
+        //arrayOfTweetDatesForTweet = (object?.objectForKey("TWEETDATES"))! as! [String]
     }
     
     // MARK: NSTimer
-    func checkTiming(){
-        print("checking Timing\(NSDate())")
-        let timeNow = NSDate()
-        
-        let formatter = NSDateFormatter()
-        formatter.dateFormat = "hh:mm"
-        let string:String = formatter.stringFromDate(timeNow)
-        
-        let index = arrayOfTweetDatesForTweet.indexOf(string)
-        
-        if index != nil {
-            let tweetText = arrayOfTweetTextsForTweet[index!]
-            print("Tweeted\(tweetText,timeNow)")
-        }
-    }
+//    func checkTiming(){
+//        print("checking Timing\(NSDate())")
+//        let timeNow = NSDate()
+//        
+//        let formatter = NSDateFormatter()
+//        formatter.dateFormat = "hh:mm"
+//        let string:String = formatter.stringFromDate(timeNow)
+//        
+//        let index = arrayOfTweetDatesForTweet.indexOf(string)
+//        
+//        if index != nil {
+//            let tweetText = arrayOfTweetTextsForTweet[index!]
+//            print("Tweeted\(tweetText,timeNow)")
+//        }
+//    }
 
 }
 
