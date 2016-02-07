@@ -60,8 +60,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Master" id="tQt-TN-PWz">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="mkY-or-gfI"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="NYZ-x3-LrD">
+                        <barButtonItem key="leftBarButtonItem" image="free-settings.png" id="mkY-or-gfI">
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="touchedSettings" destination="pGg-6v-bdr" id="jQy-11-Q2T"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="add.png" id="NYZ-x3-LrD">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="1su-Zd-3mx" kind="presentation" identifier="toAddView" id="0nf-9T-gKX"/>
@@ -291,4 +296,8 @@
             <point key="canvasLocation" x="119.5" y="823.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="add.png" width="20" height="20"/>
+        <image name="free-settings.png" width="20" height="20"/>
+    </resources>
 </document>
