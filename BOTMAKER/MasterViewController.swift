@@ -18,6 +18,8 @@ class MasterViewController: UITableViewController {
     var arrayOfTweetTextsForTweet:[String] = []
     //var arrayOfTweetDatesForTweet:[String] = []
     
+    //var isLogin = Bool()
+    
     @IBOutlet var addButton : UIBarButtonItem!
     
     override func awakeFromNib() {
@@ -56,11 +58,12 @@ class MasterViewController: UITableViewController {
         }
     }
     
-    @IBAction func touchedSettings() {
+    @IBAction func touchedSettings(){
         
         if isLogin() {
-            
+            self.performSegueWithIdentifier("toLogin", sender: nil)
         }
+        
     }
     
     // MARK: - Segues
@@ -129,17 +132,11 @@ class MasterViewController: UITableViewController {
     // MARK: -Login
     
     func login (){
-        //        let sessionStore = Twitter.sharedInstance().sessionStore
-        //        let lastSession = sessionStore.session
         let userDefaultOfSession = NSUserDefaults.standardUserDefaults()
-        
-        
         if  self.isLogin() {
             let userSession = NSKeyedUnarchiver.unarchiveObjectWithData(userDefaultOfSession.objectForKey("USERSESSION") as! NSData) as! TWTRSession
             print("It did not segue \(userSession.userName)")
-            //self.label.text = "Signed as \(userSession.userName)"
             print("Signed as \(userSession.userName)")
-            //userID = userSession.userID
         }else{
             self.performSegueWithIdentifier("toLogin", sender: nil)
             print("Segue is success")
@@ -158,8 +155,6 @@ class MasterViewController: UITableViewController {
             return false
         }
     }
-    
-    // TODO: I have to fix name of variable
     
     
     // MARK: NSUserDefaultsObserver

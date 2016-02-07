@@ -10,6 +10,7 @@
 		7C08CC231C60933300F54015 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C08CC221C60933300F54015 /* back.png */; };
 		7C08CC681C6720E500F54015 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C08CC661C6720E500F54015 /* add.png */; };
 		7C08CC691C6720E500F54015 /* free-settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C08CC671C6720E500F54015 /* free-settings.png */; };
+		7C08CC6B1C674EB600F54015 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C08CC6A1C674EB600F54015 /* AppColors.swift */; };
 		7C80531D1C3CD5E400F6A2D4 /* Untitled.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C80531C1C3CD5E400F6A2D4 /* Untitled.png */; };
 		7CCD35921BF78BB10097E830 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCD35911BF78BB10097E830 /* AppDelegate.swift */; };
 		7CCD35941BF78BB10097E830 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCD35931BF78BB10097E830 /* MasterViewController.swift */; };
@@ -40,6 +41,7 @@
 		7C08CC221C60933300F54015 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		7C08CC661C6720E500F54015 /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add.png; sourceTree = "<group>"; };
 		7C08CC671C6720E500F54015 /* free-settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "free-settings.png"; sourceTree = "<group>"; };
+		7C08CC6A1C674EB600F54015 /* AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		7C80531C1C3CD5E400F6A2D4 /* Untitled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Untitled.png; sourceTree = "<group>"; };
 		7CCD358C1BF78BB10097E830 /* BOTMAKER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BOTMAKER.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CCD35901BF78BB10097E830 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				7CCD35951BF78BB10097E830 /* DetailViewController.swift */,
 				7CCD35BC1BFCB7550097E830 /* AddViewController.swift */,
 				7CCD35FC1C007A0D0097E830 /* LoginViewController.swift */,
+				7C08CC6A1C674EB600F54015 /* AppColors.swift */,
 				7CCD35971BF78BB10097E830 /* Main.storyboard */,
 				7CCD359A1BF78BB10097E830 /* Images.xcassets */,
 				7CCD359C1BF78BB10097E830 /* LaunchScreen.xib */,
@@ -280,6 +283,7 @@
 				7CCD35961BF78BB10097E830 /* DetailViewController.swift in Sources */,
 				7CCD35941BF78BB10097E830 /* MasterViewController.swift in Sources */,
 				7CCD35BD1BFCB7550097E830 /* AddViewController.swift in Sources */,
+				7C08CC6B1C674EB600F54015 /* AppColors.swift in Sources */,
 				7CCD35FD1C007A0D0097E830 /* LoginViewController.swift in Sources */,
 				7CCD35921BF78BB10097E830 /* AppDelegate.swift in Sources */,
 			);
