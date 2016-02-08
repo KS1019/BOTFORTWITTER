@@ -55,6 +55,8 @@ class MasterViewController: UITableViewController {
             //arrayOfTweetDates = tweetUserDefaultsForCell!.objectForKey("TWEETDATES")!
             self.tableView.reloadData()
             
+            print("\(arrayOfTweetTexts)")
+            
         }
     }
     

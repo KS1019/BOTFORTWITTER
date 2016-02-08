@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         Fabric.with([Twitter.self])
+        //バックグラウンドの設定
         UIApplication.sharedApplication().setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
         return true
     }
@@ -47,6 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        //バックグラウンドでの処理
         let now = NSDate()
         
         let formatter = NSDateFormatter()
@@ -56,6 +58,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         print(string)
         completionHandler(UIBackgroundFetchResult.NewData)
+        
+        
+        //let masterViewController = MasterViewController()
+        let tweetsUserDefaults = NSUserDefaults.standardUserDefaults()
+        let tweets = tweetsUserDefaults.objectForKey("TWEETTEXTS")
+        let countOfTweets = tweets?.count
+        let randomIndex = Int(arc4random_uniform(UInt32(countOfTweets!)))
+        print("\(tweets!,randomIndex)")
+        let endPoint = "https://api.twitter.com/1.1/statuses/update.json"
+        let parameters = ["status":"\(tweets![randomIndex])"]
+        let client : TWTRAPIClient = Twitter.sharedInstance().APIClient
+        let request : NSURLRequest = client.URLRequestWithMethod("POST", URL: endPoint, parameters: parameters, error: nil)
+        
+//        client.sendTwitterRequest(request, completion:{ (TWTRNetworkCompletion) -> Void in
+//            // 送信完了
+//        })
+        print("tweeted\(request)")
+        print("tweet : \(parameters)")
     }
 
 
