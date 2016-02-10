@@ -13,16 +13,27 @@ class LoginViewController: UIViewController {
     
     let Colors = AppColors()
     
+    @IBOutlet var label:UILabel!
+    @IBOutlet var userImageView:UIImageView!
+    @IBOutlet var nameLabel:UILabel!
+    @IBOutlet var screenNameLabel:UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        label.hidden = true
         print("LoginView is appeared")
         let master = MasterViewController()
         if master.isLogin() {
+            label.hidden = false
+            self.setUserInfo()
             self.setLogoutButton()
         }else if !master.isLogin() {
+            label.hidden = true
             self.setLoginButton()
         }else{
-            setLogoutButton()
+            label.hidden = false
+            self.setUserInfo()
+            self.setLogoutButton()
         }
         //        let loginButton = TWTRLogInButton(logInCompletion: {
         //            session, error in
@@ -107,6 +118,31 @@ class LoginViewController: UIViewController {
     
     func cancel() {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func setUserInfo() {
+        let userInfoDefaults = NSUserDefaults.standardUserDefaults()
+        let userSession = NSKeyedUnarchiver.unarchiveObjectWithData(userInfoDefaults.objectForKey("USERSESSION") as! NSData) as! TWTRSession
+        let userID = userSession.userID
+        
+        let client : TWTRAPIClient = Twitter.sharedInstance().APIClient
+        client.loadUserWithID(userID){(user, error) -> Void in
+            // handle the response or error
+            if (user != nil) {
+                let imageURL = NSURL(string:(user?.profileImageLargeURL)!)
+                let imageData = NSData(contentsOfURL: imageURL!)
+                let image = UIImage(data:imageData!)
+                self.userImageView.image = image
+                self.nameLabel.text = user?.name
+                self.screenNameLabel.text = user?.formattedScreenName
+            }else{
+                if (error != nil) {
+                    print("Error : %@",error)
+                }
+            }
+            
+        }
+        
     }
     
     
