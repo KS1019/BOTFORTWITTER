@@ -130,6 +130,7 @@ class LoginViewController: UIViewController {
             // handle the response or error
             if (user != nil) {
                 let imageURL = NSURL(string:(user?.profileImageLargeURL)!)
+                print("imageURL -> \(imageURL)")
                 let imageData = NSData(contentsOfURL: imageURL!)
                 let image = UIImage(data:imageData!)
                 self.userImageView.image = image
