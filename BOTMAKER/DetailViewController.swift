@@ -11,10 +11,11 @@
 import UIKit
 import TwitterKit
 
-class DetailViewController: UIViewController,UITextFieldDelegate {
+class DetailViewController: UIViewController,UITextViewDelegate {
 
 //    @IBOutlet weak var detailDescriptionLabel: UILabel!
     @IBOutlet var tweetTextField : UITextField!
+    @IBOutlet var tweetTextView : UITextView!
     @IBOutlet var tweetButton : UIButton?
 //    @IBOutlet var tweetDatePicker : UIDatePicker!
 //    @IBOutlet var repeatSwitch : UISwitch!
@@ -22,34 +23,15 @@ class DetailViewController: UIViewController,UITextFieldDelegate {
     
 
 
-    var detailItem: AnyObject? {
-        //Tweet Time
-        didSet {
-            // Update the view.
-            //self.configureView()
-        }
-    }
-
-    func configureView() {
-        // Update the user interface for the detail item.
-        if let detail: AnyObject = self.detailItem {
-            if let textField = self.tweetTextField {
-                textField.text = detail.description
-            }
-        }
-    }
+    var detailItem: AnyObject?
     
-    var tweetText: String? {
-        didSet{
-            self.tweetTextConfigureView()
-        }
-    }
+    var tweetText: String?
     
     func tweetTextConfigureView() {
         
         if let textOfTweet = self.tweetText{
-            if let textField  = self.tweetTextField {
-                textField.text = textOfTweet
+            if let textView  = self.tweetTextView {
+                textView.text = textOfTweet
                 print("@@")
             }
         }
@@ -58,12 +40,11 @@ class DetailViewController: UIViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        //self.configureView()
-        tweetTextField.enabled = false
+        //tweetTextView.enabled = false
         self.tweetTextConfigureView()
-        tweetTextField.delegate = self
-        print("\(tweetText)")
-        tweetText = tweetTextField.text
+        tweetTextView.delegate = self
+        print("text -> \(tweetText!)")
+        tweetText = tweetTextView.text
         
         self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
         
