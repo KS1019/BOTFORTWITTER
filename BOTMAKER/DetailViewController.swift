@@ -40,7 +40,7 @@ class DetailViewController: UIViewController,UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        //tweetTextView.enabled = false
+        tweetTextView.editable = false
         self.tweetTextConfigureView()
         tweetTextView.delegate = self
         print("text -> \(tweetText!)")
