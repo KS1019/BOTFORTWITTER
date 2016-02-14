@@ -11,6 +11,8 @@
 		7C08CC681C6720E500F54015 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C08CC661C6720E500F54015 /* add.png */; };
 		7C08CC691C6720E500F54015 /* free-settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C08CC671C6720E500F54015 /* free-settings.png */; };
 		7C08CC6B1C674EB600F54015 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C08CC6A1C674EB600F54015 /* AppColors.swift */; };
+		7C08CC6F1C70816000F54015 /* BOTMAKER-TermOfService.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7C08CC6E1C70816000F54015 /* BOTMAKER-TermOfService.txt */; };
+		7C08CC721C70860800F54015 /* TERMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C08CC711C70860800F54015 /* TERMViewController.swift */; };
 		7C80531D1C3CD5E400F6A2D4 /* Untitled.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C80531C1C3CD5E400F6A2D4 /* Untitled.png */; };
 		7CCD35921BF78BB10097E830 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCD35911BF78BB10097E830 /* AppDelegate.swift */; };
 		7CCD35941BF78BB10097E830 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCD35931BF78BB10097E830 /* MasterViewController.swift */; };
@@ -42,6 +44,8 @@
 		7C08CC661C6720E500F54015 /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add.png; sourceTree = "<group>"; };
 		7C08CC671C6720E500F54015 /* free-settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "free-settings.png"; sourceTree = "<group>"; };
 		7C08CC6A1C674EB600F54015 /* AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		7C08CC6E1C70816000F54015 /* BOTMAKER-TermOfService.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "BOTMAKER-TermOfService.txt"; sourceTree = "<group>"; };
+		7C08CC711C70860800F54015 /* TERMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TERMViewController.swift; path = ../TERMViewController.swift; sourceTree = "<group>"; };
 		7C80531C1C3CD5E400F6A2D4 /* Untitled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Untitled.png; sourceTree = "<group>"; };
 		7CCD358C1BF78BB10097E830 /* BOTMAKER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BOTMAKER.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CCD35901BF78BB10097E830 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -83,13 +87,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7CCD35831BF78BB10097E830 = {
+		7C08CC6D1C70805C00F54015 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				7C08CC661C6720E500F54015 /* add.png */,
 				7C08CC671C6720E500F54015 /* free-settings.png */,
 				7C08CC221C60933300F54015 /* back.png */,
 				7C80531C1C3CD5E400F6A2D4 /* Untitled.png */,
+				7C08CC661C6720E500F54015 /* add.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		7C08CC701C70816D00F54015 /* TEXT */ = {
+			isa = PBXGroup;
+			children = (
+				7C08CC6E1C70816000F54015 /* BOTMAKER-TermOfService.txt */,
+			);
+			name = TEXT;
+			sourceTree = "<group>";
+		};
+		7CCD35831BF78BB10097E830 = {
+			isa = PBXGroup;
+			children = (
+				7C08CC701C70816D00F54015 /* TEXT */,
+				7C08CC6D1C70805C00F54015 /* images */,
 				7CCD358E1BF78BB10097E830 /* BOTMAKER */,
 				7CCD35A61BF78BB10097E830 /* BOTMAKERTests */,
 				7CCD358D1BF78BB10097E830 /* Products */,
@@ -113,6 +134,7 @@
 				7CCD35951BF78BB10097E830 /* DetailViewController.swift */,
 				7CCD35BC1BFCB7550097E830 /* AddViewController.swift */,
 				7CCD35FC1C007A0D0097E830 /* LoginViewController.swift */,
+				7C08CC711C70860800F54015 /* TERMViewController.swift */,
 				7C08CC6A1C674EB600F54015 /* AppColors.swift */,
 				7CCD35971BF78BB10097E830 /* Main.storyboard */,
 				7CCD359A1BF78BB10097E830 /* Images.xcassets */,
@@ -198,7 +220,7 @@
 			attributes = {
 				LastSwiftMigration = 0710;
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Kotaro Suto";
 				TargetAttributes = {
 					7CCD358B1BF78BB10097E830 = {
@@ -242,6 +264,7 @@
 				7C08CC691C6720E500F54015 /* free-settings.png in Resources */,
 				7CCD35BA1BF78CEE0097E830 /* TwitterKitResources.bundle in Resources */,
 				7CCD35991BF78BB10097E830 /* Main.storyboard in Resources */,
+				7C08CC6F1C70816000F54015 /* BOTMAKER-TermOfService.txt in Resources */,
 				7C08CC681C6720E500F54015 /* add.png in Resources */,
 				7C08CC231C60933300F54015 /* back.png in Resources */,
 				7CCD359E1BF78BB10097E830 /* LaunchScreen.xib in Resources */,
@@ -286,6 +309,7 @@
 				7C08CC6B1C674EB600F54015 /* AppColors.swift in Sources */,
 				7CCD35FD1C007A0D0097E830 /* LoginViewController.swift in Sources */,
 				7CCD35921BF78BB10097E830 /* AppDelegate.swift in Sources */,
+				7C08CC721C70860800F54015 /* TERMViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +372,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -419,6 +444,7 @@
 				INFOPLIST_FILE = BOTMAKER/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Suto.Kotaro.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -434,6 +460,7 @@
 				INFOPLIST_FILE = BOTMAKER/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Suto.Kotaro.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -452,6 +479,7 @@
 				);
 				INFOPLIST_FILE = BOTMAKERTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Suto.Kotaro.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BOTMAKER.app/BOTMAKER";
 			};
@@ -467,6 +495,7 @@
 				);
 				INFOPLIST_FILE = BOTMAKERTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Suto.Kotaro.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BOTMAKER.app/BOTMAKER";
 			};
