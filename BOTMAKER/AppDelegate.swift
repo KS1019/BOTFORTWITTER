@@ -22,6 +22,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Fabric.with([Twitter.self])
         //バックグラウンドの設定
         UIApplication.sharedApplication().setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
+        let termView = TERMViewController()
+        
+        if termView.didUpdateTerm == true {
+            let firstrunDateDefaults = NSUserDefaults.standardUserDefaults()
+            firstrunDateDefaults.removeObjectForKey("firstRunDate")
+            firstrunDateDefaults.synchronize()
+            termView.hasAgreed = false
+            print("アップデート後、初回起動だよ")
+        }else if termView.didUpdateTerm == false {
+            if isFirstRun() {
+                //初回起動
+                termView.hasAgreed = false
+                print("初回起動だよ")
+            }else{
+                termView.hasAgreed = true
+                print("初回起動じゃないよ")
+            }
+        }
         return true
     }
 
@@ -76,6 +94,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        })
         print("tweeted\(request)")
         print("tweet : \(parameters)")
+    }
+    
+    func isFirstRun() -> Bool {
+        let FirstRunDefaults : NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        
+        if (FirstRunDefaults.objectForKey("firstRunDate") != nil) {
+            return false
+        }else{
+            return true
+
+        }
     }
 
 

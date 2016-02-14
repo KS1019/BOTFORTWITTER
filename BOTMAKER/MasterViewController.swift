@@ -14,11 +14,8 @@ class MasterViewController: UITableViewController {
     var objects = [AnyObject]()
     var arrayOfTweetTexts:AnyObject = []
     //var arrayOfTweetDates:AnyObject = []
-    //var timer : NSTimer?
     var arrayOfTweetTextsForTweet:[String] = []
     //var arrayOfTweetDatesForTweet:[String] = []
-    
-    //var isLogin = Bool()
     
     @IBOutlet var addButton : UIBarButtonItem!
     
@@ -28,10 +25,12 @@ class MasterViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //timer = NSTimer.scheduledTimerWithTimeInterval(60, target: self, selector: "checkTiming", userInfo: nil, repeats: true)
-        // Do any additional setup after loading the view, typically from a nib.
-        //self.navigationItem.leftBarButtonItem = self.editButtonItem()
-        //self.navigationItem.leftBarButtonItem?.tintColor = UIColor.blackColor()
+        print(__FILE__,__FUNCTION__)
+        let termView = TERMViewController()
+        if termView.hasAgreed != true {
+            print(__FUNCTION__,"inIF")
+            self.segueTermView()
+        }
         addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "segueToAddView")
     }
     
@@ -69,6 +68,10 @@ class MasterViewController: UITableViewController {
     }
     
     // MARK: - Segues
+    
+    func segueTermView() {
+        self.performSegueWithIdentifier("toTERMView", sender: nil)
+    }
     // TODO: -repair
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
@@ -83,7 +86,6 @@ class MasterViewController: UITableViewController {
     
     func segueToAddView() {
         print("segueToAddView is called")
-        
     }
     
     // MARK: - Table View

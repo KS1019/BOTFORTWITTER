@@ -10,40 +10,48 @@ import UIKit
 
 class TERMViewController: UIViewController {
     
+    @IBOutlet var textView : UITextView?
+    @IBOutlet var agreeButton : UIButton?
+    
+    var hasAgreed : Bool = true
+    
+    //利用規約を変更したら、その時のアップデート時だけtrueにする
+    var didUpdateTerm : Bool = true
+    
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         print(__FUNCTION__,__FILE__)
+        textView?.layer.masksToBounds = true
+        textView?.layer.cornerRadius = 5
+        
+        agreeButton?.layer.cornerRadius = 8
 
         // Do any additional setup after loading the view.
-        
-//        if let filePath = NSBundle.mainBundle().pathForResource("BOTMAKER-TermOfService", ofType: "txt"){
-//            var error:NSError?
-//            let userPolicy = NSString(contentsOfFile: filePath, encoding: NSUTF8StringEncoding,erorr:nil)
-//                NSLog("\(userPolicy)") as String
-//            
-//        }
-        
-        let file_name = "BOTMAKER-TermOfService"
-        
-        if let dir : NSString = NSSearchPathForDirectoriesInDomains( NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true ).first {
-            
             let path_file_name = NSBundle.mainBundle().pathForResource("BOTMAKER-TermOfService", ofType: "txt")
             do {
                 
                 let text = try NSString( contentsOfFile: path_file_name!, encoding: NSUTF8StringEncoding )
                 print( text )
+                textView?.text = text as String 
                 
             } catch {
                 //エラー処理
             }
-        }
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func agree() {
+        let firstRundateDefaults : NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        firstRundateDefaults.setObject(NSDate(), forKey: "firstRunDate")
+        firstRundateDefaults.synchronize()
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
 
