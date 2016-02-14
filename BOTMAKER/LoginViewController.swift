@@ -17,6 +17,7 @@ class LoginViewController: UIViewController {
     @IBOutlet var userImageView:UIImageView!
     @IBOutlet var nameLabel:UILabel!
     @IBOutlet var screenNameLabel:UILabel!
+    @IBOutlet var userInfoBackground:UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,25 +36,6 @@ class LoginViewController: UIViewController {
             self.setUserInfo()
             self.setLogoutButton()
         }
-        //        let loginButton = TWTRLogInButton(logInCompletion: {
-        //            session, error in
-        //            let userSession = session
-        //            if session != nil {
-        //                let userData : NSData = NSKeyedArchiver.archivedDataWithRootObject(userSession!);
-        //                print(session!.userName)
-        //                // ログイン成功したら遷移する
-        //                let loginDefaults = NSUserDefaults.standardUserDefaults()
-        //                loginDefaults.setObject(userData, forKey: "USERSESSION")
-        //                loginDefaults.synchronize()
-        //                self.dismissViewControllerAnimated(false, completion: nil)
-        //            } else {
-        //                print(error!.localizedDescription)
-        //            }
-        //        })
-        //        loginButton.center = self.view.center
-        //        self.view.addSubview(loginButton)
-        
-        
         // Do any additional setup after loading the view.
     }
     
@@ -98,7 +80,7 @@ class LoginViewController: UIViewController {
         cacelButton.setTitleColor(UIColor.blackColor(), forState:.Normal)
         cacelButton.frame = CGRectMake(15,20,30,30)
         cacelButton.layer.cornerRadius = 10
-        cacelButton.backgroundColor = UIColor.whiteColor()
+        cacelButton.backgroundColor = Colors.TwitterBackgroundBlue
         cacelButton.addTarget(self, action:"cancel", forControlEvents:.TouchUpInside)
         self.view.addSubview(cacelButton)
     }
@@ -121,6 +103,11 @@ class LoginViewController: UIViewController {
     }
     
     func setUserInfo() {
+        userInfoBackground.layer.cornerRadius = 5
+        self.view.sendSubviewToBack(userInfoBackground)
+        userImageView.layer.masksToBounds = true
+        userImageView.layer.cornerRadius = 5
+        self.view.backgroundColor = Colors.TwitterBackgroundBlue
         let userInfoDefaults = NSUserDefaults.standardUserDefaults()
         let userSession = NSKeyedUnarchiver.unarchiveObjectWithData(userInfoDefaults.objectForKey("USERSESSION") as! NSData) as! TWTRSession
         let userID = userSession.userID
