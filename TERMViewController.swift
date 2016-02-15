@@ -13,7 +13,7 @@ class TERMViewController: UIViewController {
     @IBOutlet var textView : UITextView?
     @IBOutlet var agreeButton : UIButton?
     
-    var hasAgreed : Bool = true
+    var hasAgreed:Bool! = Bool()
     
     //利用規約を変更したら、その時のアップデート時だけtrueにする
     var didUpdateTerm : Bool = true
@@ -22,7 +22,7 @@ class TERMViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(__FUNCTION__,__FILE__)
+        //print(__FUNCTION__,__FILE__,hasAgreed)
         textView?.layer.masksToBounds = true
         textView?.layer.cornerRadius = 5
         

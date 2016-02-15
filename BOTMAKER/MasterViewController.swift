@@ -27,7 +27,8 @@ class MasterViewController: UITableViewController {
         super.viewDidLoad()
         print(__FILE__,__FUNCTION__)
         let termView = TERMViewController()
-        if termView.hasAgreed != true {
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        if userDefaults.objectForKey("hasAgreed") as! Bool != true {
             print(__FUNCTION__,"inIF")
             self.segueTermView()
         }

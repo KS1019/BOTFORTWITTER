@@ -23,23 +23,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //バックグラウンドの設定
         UIApplication.sharedApplication().setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
         let termView = TERMViewController()
-        
+        let firstrunDateDefaults = NSUserDefaults.standardUserDefaults()
         if termView.didUpdateTerm == true {
-            let firstrunDateDefaults = NSUserDefaults.standardUserDefaults()
             firstrunDateDefaults.removeObjectForKey("firstRunDate")
             firstrunDateDefaults.synchronize()
-            termView.hasAgreed = false
             print("アップデート後、初回起動だよ")
-        }else if termView.didUpdateTerm == false {
-            if isFirstRun() {
-                //初回起動
-                termView.hasAgreed = false
-                print("初回起動だよ")
-            }else{
-                termView.hasAgreed = true
-                print("初回起動じゃないよ")
-            }
         }
+        
+        if isFirstRun() {
+            //初回起動
+            termView.hasAgreed = false
+            firstrunDateDefaults.setObject(termView.hasAgreed, forKey: "hasAgreed")
+            firstrunDateDefaults.synchronize()
+            print("初回起動だよ")
+        }else{
+            termView.hasAgreed = true
+            firstrunDateDefaults.setObject(termView.hasAgreed, forKey: "hasAgreed")
+            firstrunDateDefaults.synchronize()
+            print("初回起動じゃないよ -> \(termView.hasAgreed)")
+        }
+        
         return true
     }
 
