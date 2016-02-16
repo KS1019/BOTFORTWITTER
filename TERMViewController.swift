@@ -16,7 +16,7 @@ class TERMViewController: UIViewController {
     var hasAgreed:Bool! = Bool()
     
     //利用規約を変更したら、その時のアップデート時だけtrueにする
-    var didUpdateTerm : Bool = true
+    var didUpdateTerm : Bool = false
     
     
 

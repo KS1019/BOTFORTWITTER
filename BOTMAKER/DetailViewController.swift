@@ -14,9 +14,8 @@ import TwitterKit
 class DetailViewController: UIViewController,UITextViewDelegate {
 
 //    @IBOutlet weak var detailDescriptionLabel: UILabel!
-    @IBOutlet var tweetTextField : UITextField!
-    @IBOutlet var tweetTextView : UITextView!
     @IBOutlet var tweetButton : UIButton?
+    @IBOutlet var tweetLabel : UILabel!
 //    @IBOutlet var tweetDatePicker : UIDatePicker!
 //    @IBOutlet var repeatSwitch : UISwitch!
 //    @IBOutlet var daysSegment : UISegmentedControl!
@@ -25,27 +24,26 @@ class DetailViewController: UIViewController,UITextViewDelegate {
 
     var detailItem: AnyObject?
     
-    var tweetText: String?
+    var tweetText: String!
     
     func tweetTextConfigureView() {
         
-        if let textOfTweet = self.tweetText{
-            if let textView  = self.tweetTextView {
-                textView.text = textOfTweet
-                print("@@")
-            }
+        if let textOfTweet : String! = self.tweetText{
+                print(textOfTweet)
+                let label : UILabel! = UILabel()
+                label.frame = CGRectMake(20, 93,335,0)
+                label.text = textOfTweet
+                label.numberOfLines = 0
+                label.sizeToFit()
+                self.view.addSubview(label)
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        tweetTextView.editable = false
         self.tweetTextConfigureView()
-        tweetTextView.delegate = self
-        print("text -> \(tweetText!)")
-        tweetText = tweetTextView.text
-        
+        print("text -> \(tweetText!)")        
         self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
         
 //        tweetDatePicker.datePickerMode = UIDatePickerMode.DateAndTime

@@ -25,7 +25,6 @@
         <!--View Controller-->
         <scene sceneID="DBN-EL-hBb">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2zA-fb-zMk" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="A8z-ND-lbm" customClass="TERMViewController" customModule="BOTMAKER" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3p8-LJ-4Sc"/>
@@ -66,6 +65,7 @@
                         <outlet property="textView" destination="Bty-N3-U4c" id="No5-wK-P0c"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2zA-fb-zMk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-432.5" y="829.5"/>
         </scene>
@@ -161,18 +161,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H8W-cP-9Fs">
-                                <rect key="frame" x="20" y="93" width="335" height="216"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLp-Iv-peb">
+                                <rect key="frame" x="20" y="93" width="335" height="232"/>
                                 <color key="backgroundColor" red="0.0078431377190000002" green="0.65882354970000001" blue="0.9529411793" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="ツイート" id="cra-N8-TIN"/>
                     <connections>
-                        <outlet property="tweetTextView" destination="H8W-cP-9Fs" id="xQS-Wf-HE9"/>
+                        <outlet property="tweetLabel" destination="TLp-Iv-peb" id="OeC-wK-ra7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrm-kH-fPn" sceneMemberID="firstResponder"/>
