@@ -25,6 +25,8 @@ class AddViewController: UIViewController ,UITextViewDelegate {
         super.viewDidLoad()
         
         tweetTextView.delegate = self
+        tweetTextView.layer.masksToBounds = true
+        tweetTextView.layer.cornerRadius = 5
         
         // Do any additional setup after loading the view.
     }

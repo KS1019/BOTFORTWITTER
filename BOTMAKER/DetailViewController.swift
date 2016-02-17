@@ -29,16 +29,18 @@ class DetailViewController: UIViewController,UITextViewDelegate {
     func tweetTextConfigureView() {
         
         if let textOfTweet : String! = self.tweetText{
-                print(textOfTweet)
-                let label : UILabel! = UILabel()
-                label.frame = CGRectMake(20, 93,335,0)
-                label.text = textOfTweet
-                label.numberOfLines = 0
-                label.sizeToFit()
-                self.view.addSubview(label)
+            print(textOfTweet)
+            tweetLabel.clipsToBounds = true
+            tweetLabel.layer.cornerRadius = 5
+            let label : UILabel! = UILabel()
+            label.frame = CGRectMake(20, 93,335,0)
+            label.text = textOfTweet
+            label.numberOfLines = 0
+            label.sizeToFit()
+            self.view.addSubview(label)
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
