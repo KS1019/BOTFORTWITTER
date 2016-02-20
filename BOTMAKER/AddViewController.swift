@@ -128,14 +128,14 @@ class AddViewController: UIViewController ,UITextViewDelegate {
         
     }
     
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange,
-        replacementText text: String) -> Bool {
-            if text == "\n" {
-                textView.resignFirstResponder() //キーボードを閉じる
-                return false
-            }
-            return true
-    }
+//    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange,
+//        replacementText text: String) -> Bool {
+//            if text == "\n" {
+//                textView.resignFirstResponder() //キーボードを閉じる
+//                return false
+//            }
+//            return true
+//    }
     
     
     //ボタンを押すとキーボードが下がるメソッド
