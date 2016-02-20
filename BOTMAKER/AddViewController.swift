@@ -29,6 +29,29 @@ class AddViewController: UIViewController ,UITextViewDelegate {
         tweetTextView.layer.cornerRadius = 5
         
         // Do any additional setup after loading the view.
+        //TextFieldを生成
+
+        
+        //ボタンを追加するためのViewを生成します。
+        let myKeyboard = UIView(frame: CGRectMake(0, 0, 320, 40))
+        myKeyboard.backgroundColor = UIColor.lightGrayColor()
+        
+        //完了ボタンの生成
+        let myButton = UIButton(frame: CGRectMake(300, 5, 70, 30))
+        myButton.backgroundColor = UIColor.darkGrayColor()
+        myButton.setTitle("完了", forState: .Normal)
+        myButton.layer.cornerRadius = 2.0
+        myButton.addTarget(self, action: "onClickMyButton:", forControlEvents: .TouchUpInside)
+        
+        //Viewに完了ボタンを追加する。
+        myKeyboard.addSubview(myButton)
+        
+        //ViewをFieldに設定する
+        tweetTextView.inputAccessoryView = myKeyboard
+        tweetTextView.delegate = self
+        
+        //myTextFieldを追加する 
+        //self.view.addSubview()
     }
     
     override func didReceiveMemoryWarning() {
@@ -112,6 +135,17 @@ class AddViewController: UIViewController ,UITextViewDelegate {
                 return false
             }
             return true
+    }
+    
+    
+    //ボタンを押すとキーボードが下がるメソッド
+    func onClickMyButton (sender: UIButton) {
+        self.view.endEditing(true)
+    }
+    //改行押すとキーボードが下がるメソッド
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     /*
