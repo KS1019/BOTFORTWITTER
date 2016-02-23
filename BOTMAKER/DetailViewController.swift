@@ -26,10 +26,12 @@ class DetailViewController: UIViewController,UITextViewDelegate {
     
     var tweetText: String!
     
+    var numberOfTweet : Int!
+    
     func tweetTextConfigureView() {
         
         if let textOfTweet : String! = self.tweetText{
-            print(textOfTweet)
+            print("\(tweetText)")
             tweetLabel.clipsToBounds = true
             tweetLabel.layer.cornerRadius = 5
             let label : UILabel! = UILabel()
@@ -45,7 +47,9 @@ class DetailViewController: UIViewController,UITextViewDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.tweetTextConfigureView()
-        print("text -> \(tweetText!)")        
+        //let defaults = NSUserDefaults.standardUserDefaults()
+        print("text -> \(tweetText!)")
+        print("NumOfTimes -> \(numberOfTweet + 1)")
         self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
         
 //        tweetDatePicker.datePickerMode = UIDatePickerMode.DateAndTime

@@ -366,6 +366,15 @@
                                 <color key="textColor" red="0.0078431377190000002" green="0.65882354970000001" blue="0.9529411793" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xQQ-sz-Bn6">
+                                <rect key="frame" x="90" y="448" width="195" height="136"/>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1日のツイート回数の上限" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6aQ-if-73I">
+                                <rect key="frame" x="63" y="398" width="249" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0078431377190000002" green="0.65882354970000001" blue="0.9529411793" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -373,6 +382,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="labelOfCountOfText" destination="Wjx-Jf-cMQ" id="gfq-w9-k9o"/>
+                        <outlet property="pickerOfTweet" destination="xQQ-sz-Bn6" id="3a9-Lm-nKO"/>
                         <outlet property="tweetTextView" destination="P4k-Nh-6We" id="Sds-9N-kEa"/>
                     </connections>
                 </viewController>

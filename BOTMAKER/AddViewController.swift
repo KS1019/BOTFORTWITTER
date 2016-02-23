@@ -8,17 +8,22 @@
 
 import UIKit
 
-class AddViewController: UIViewController ,UITextViewDelegate {
+class AddViewController: UIViewController,UITextViewDelegate,UIPickerViewDelegate,UIPickerViewDataSource{
     
     
     
     @IBOutlet var tweetTextView : UITextView!
     @IBOutlet var labelOfCountOfText : UILabel!
+    @IBOutlet var pickerOfTweet : UIPickerView!
     @IBOutlet var datePickerOfTweet : UIDatePicker!
+    
+    var arrayOfQuestion : [String] = ["1日に1回","1日に2回","1日に3回"]
+    
     
     var tweetDate : String!
     
     var tweetTexts = [String]()
+    var arrOfNumOfTimesOfTweet = [Int]()
     //var tweetDates = [String]()
     
     override func viewDidLoad() {
@@ -28,9 +33,8 @@ class AddViewController: UIViewController ,UITextViewDelegate {
         tweetTextView.layer.masksToBounds = true
         tweetTextView.layer.cornerRadius = 5
         
-        // Do any additional setup after loading the view.
-        //TextFieldを生成
-
+        pickerOfTweet.delegate = self
+        pickerOfTweet.dataSource = self
         
         //ボタンを追加するためのViewを生成します。
         let myKeyboard = UIView(frame: CGRectMake(0, 0, 320, 40))
@@ -65,6 +69,12 @@ class AddViewController: UIViewController ,UITextViewDelegate {
             let tweetUserDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
             tweetTexts = tweetUserDefaults.objectForKey("TWEETTEXTS") as! [String]
             //tweetDates = tweetUserDefaults.objectForKey("TWEETDATES") as! [String]
+            
+            arrOfNumOfTimesOfTweet = tweetUserDefaults.objectForKey("NUMOFTIMESOFTWEET") as! [Int]
+            let numberOfTimesOfTweet : Int! = pickerOfTweet.selectedRowInComponent(0) as Int
+            arrOfNumOfTimesOfTweet.append(numberOfTimesOfTweet)
+            tweetUserDefaults.setObject(arrOfNumOfTimesOfTweet, forKey:"NUMOFTIMESOFTWEET")
+
             
 //            let myDateFormatter: NSDateFormatter = NSDateFormatter()
 //            myDateFormatter.dateFormat = "hh:mm"
@@ -128,14 +138,6 @@ class AddViewController: UIViewController ,UITextViewDelegate {
         
     }
     
-//    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange,
-//        replacementText text: String) -> Bool {
-//            if text == "\n" {
-//                textView.resignFirstResponder() //キーボードを閉じる
-//                return false
-//            }
-//            return true
-//    }
     
     
     //ボタンを押すとキーボードが下がるメソッド
@@ -146,6 +148,35 @@ class AddViewController: UIViewController ,UITextViewDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
+    }
+    
+    //MARK: -UIPickerViewDelegate
+    
+    //表示列
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    //表示個数
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return arrayOfQuestion.count
+    }
+    
+    //表示内容
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return arrayOfQuestion[row] as String
+    }
+    
+    //選択時
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print("列:")
+        print("値:")
+    }
+    
+    
+    func convertString(string: String) -> String {
+        let data = string.dataUsingEncoding(NSASCIIStringEncoding, allowLossyConversion: true)
+        return NSString(data: data!, encoding: NSASCIIStringEncoding) as! String
     }
     
     /*

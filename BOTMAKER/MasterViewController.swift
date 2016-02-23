@@ -15,6 +15,7 @@ class MasterViewController: UITableViewController {
     var arrayOfTweetTexts:AnyObject = []
     //var arrayOfTweetDates:AnyObject = []
     var arrayOfTweetTextsForTweet:[String] = []
+    var arrOfNum : [Int] = []
     //var arrayOfTweetDatesForTweet:[String] = []
     
     @IBOutlet var addButton : UIBarButtonItem!
@@ -50,7 +51,7 @@ class MasterViewController: UITableViewController {
         //tweetUserDefaultsForCell?.addObserver(self, forKeyPath: "TWEETDATES", options: NSKeyValueObservingOptions.New, context: nil)
         
         if (tweetUserDefaultsForCell?.objectForKey("TWEETTEXTS") != nil) {
-            
+            arrOfNum = tweetUserDefaultsForCell!.objectForKey("NUMOFTIMESOFTWEET")! as! [Int]
             arrayOfTweetTexts = tweetUserDefaultsForCell!.objectForKey("TWEETTEXTS")!
             //arrayOfTweetDates = tweetUserDefaultsForCell!.objectForKey("TWEETDATES")!
             self.tableView.reloadData()
@@ -79,8 +80,10 @@ class MasterViewController: UITableViewController {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 //let time = arrayOfTweetDates[indexPath.row] // TODO: -repair
                 let text : String = arrayOfTweetTexts[indexPath.row] as! String
+                let numOfTweet : Int = arrOfNum[indexPath.row]
                 //(segue.destinationViewController as! DetailViewController).detailItem = time
                 (segue.destinationViewController as! DetailViewController).tweetText = text
+                (segue.destinationViewController as! DetailViewController).numberOfTweet = numOfTweet
             }
         }
     }
