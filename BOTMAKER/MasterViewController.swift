@@ -27,7 +27,7 @@ class MasterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print(__FILE__,__FUNCTION__)
-        let termView = TERMViewController()
+        //let termView = TERMViewController()
         let userDefaults = NSUserDefaults.standardUserDefaults()
         if userDefaults.objectForKey("hasAgreed") as! Bool != true {
             print(__FUNCTION__,"inIF")
@@ -56,9 +56,10 @@ class MasterViewController: UITableViewController {
             //arrayOfTweetDates = tweetUserDefaultsForCell!.objectForKey("TWEETDATES")!
             self.tableView.reloadData()
             
-            print("\(arrayOfTweetTexts)")
+            print("\(arrayOfTweetTexts,arrOfNum)")
             
         }
+        tableView.reloadData()
     }
     
     @IBAction func touchedSettings(){
