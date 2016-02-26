@@ -15,9 +15,8 @@ class MasterViewController: UITableViewController {
     var arrayOfTweetTexts:AnyObject = []
     //var arrayOfTweetDates:AnyObject = []
     var arrayOfTweetTextsForTweet:[String] = []
-    var arrOfNum : [Int] = []
+    var arrOfNum : [Int]!
     //var arrayOfTweetDatesForTweet:[String] = []
-    
     @IBOutlet var addButton : UIBarButtonItem!
     
     override func awakeFromNib() {
@@ -124,14 +123,18 @@ class MasterViewController: UITableViewController {
                 //                var tweetDatesArr = arrayOfTweetDates as? Array<AnyObject>
                 //                tweetDatesArr?.removeAtIndex(indexPath.row)
                 //                arrayOfTweetDates = tweetDatesArr!
+                var numberOfTimesOfTweet = arrOfNum
+                numberOfTimesOfTweet.removeAtIndex(indexPath.row)
+                
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
                 
                 let tweetsDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+                tweetsDefaults.setObject(numberOfTimesOfTweet, forKey: "NUMOFTIMESOFTWEET")
                 tweetsDefaults.setObject(arrayOfTweetTexts, forKey: "TWEETTEXTS")
                 //tweetsDefaults.setObject(arrayOfTweetDates, forKey: "TWEETDATES")
                 tweetsDefaults.synchronize()
                 
-                print("\(arrayOfTweetTexts)")
+                print("\(arrayOfTweetTexts,numberOfTimesOfTweet)")
             }
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.

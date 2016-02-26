@@ -22,8 +22,8 @@ class AddViewController: UIViewController,UITextViewDelegate,UIPickerViewDelegat
     
     var tweetDate : String!
     
-    var tweetTexts = [String]()
-    var arrOfNumOfTimesOfTweet = [Int]()
+    var tweetTexts : [String]! = [String]()
+    var arrOfNumOfTimesOfTweet : [Int]! = [Int]()
     //var tweetDates = [String]()
     
     override func viewDidLoad() {
@@ -66,22 +66,31 @@ class AddViewController: UIViewController,UITextViewDelegate,UIPickerViewDelegat
     
     @IBAction func done(){
         if (tweetTextView.text != nil) {
-            let tweetUserDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-            tweetTexts = tweetUserDefaults.objectForKey("TWEETTEXTS") as! [String]
+            let tweetUserDefaults : NSUserDefaults! = NSUserDefaults.standardUserDefaults()
+            tweetTexts = tweetUserDefaults.objectForKey("TWEETTEXTS") as! [String]!
             //tweetDates = tweetUserDefaults.objectForKey("TWEETDATES") as! [String]
             
-            arrOfNumOfTimesOfTweet = tweetUserDefaults.objectForKey("NUMOFTIMESOFTWEET") as! [Int]
-            let numberOfTimesOfTweet : Int! = pickerOfTweet.selectedRowInComponent(0) as Int
+            arrOfNumOfTimesOfTweet = tweetUserDefaults.objectForKey("NUMOFTIMESOFTWEET") as! [Int]!
+            if arrOfNumOfTimesOfTweet == nil {
+                print("パッパラ〜")
+                arrOfNumOfTimesOfTweet = [Int]()
+            }
+            
+            if tweetTexts == nil {
+                print("ペッペペ〜")
+                tweetTexts = [String]()
+            }
+            let numberOfTimesOfTweet : Int! = pickerOfTweet.selectedRowInComponent(0) as Int!
             arrOfNumOfTimesOfTweet.append(numberOfTimesOfTweet)
             tweetUserDefaults.setObject(arrOfNumOfTimesOfTweet, forKey:"NUMOFTIMESOFTWEET")
-
             
-//            let myDateFormatter: NSDateFormatter = NSDateFormatter()
-//            myDateFormatter.dateFormat = "hh:mm"
-//            let mySelectedDate: NSString = myDateFormatter.stringFromDate(datePickerOfTweet.date)
-//            tweetDate = mySelectedDate as String
             
-//            print("tweetTexts -> \(tweetTexts) tweetDates -> \(tweetDates)")
+            //            let myDateFormatter: NSDateFormatter = NSDateFormatter()
+            //            myDateFormatter.dateFormat = "hh:mm"
+            //            let mySelectedDate: NSString = myDateFormatter.stringFromDate(datePickerOfTweet.date)
+            //            tweetDate = mySelectedDate as String
+            
+            //            print("tweetTexts -> \(tweetTexts) tweetDates -> \(tweetDates)")
             tweetTexts.append(tweetTextView.text)
             //tweetDates.append(tweetDate)
             print("tweetTexts -> \(tweetTexts)")
