@@ -69,6 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        let tweetsUserDefaults = NSUserDefaults.standardUserDefaults()
         //バックグラウンドでの処理
         let now = NSDate()
         
@@ -81,11 +82,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         completionHandler(UIBackgroundFetchResult.NewData)
         
         
-        //let masterViewController = MasterViewController()
-        let tweetsUserDefaults = NSUserDefaults.standardUserDefaults()
         let tweets = tweetsUserDefaults.objectForKey("TWEETTEXTS")
         let countOfTweets = tweets?.count
         let randomIndex = Int(arc4random_uniform(UInt32(countOfTweets!)))
+        let numbersOfTweets = tweetsUserDefaults.objectForKey("NUMOFTIMESOFTWEET")
+        let numOfTweet = numbersOfTweets![randomIndex]
+        
+        
+        
         print("\(tweets!,randomIndex)")
         let endPoint = "https://api.twitter.com/1.1/statuses/update.json"
         let parameters = ["status":"\(tweets![randomIndex])"]
@@ -95,6 +99,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        client.sendTwitterRequest(request, completion:{ (TWTRNetworkCompletion) -> Void in
 //            // 送信完了
 //        })
+        
         print("tweeted\(request)")
         print("tweet : \(parameters)")
     }
