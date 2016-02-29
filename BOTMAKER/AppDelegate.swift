@@ -73,12 +73,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //バックグラウンドでの処理
         let now = NSDate()
         
-        let formatter = NSDateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+        let todayFormatter = NSDateFormatter()
+        todayFormatter.dateFormat = "yyyy/MM/dd"
         
-        let string = formatter.stringFromDate(now)
+        let string = todayFormatter.stringFromDate(now)
         
-        print(string)
+        print("Today -> ",string)
         completionHandler(UIBackgroundFetchResult.NewData)
         
         
@@ -86,22 +86,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let countOfTweets = tweets?.count
         let randomIndex = Int(arc4random_uniform(UInt32(countOfTweets!)))
         let numbersOfTweets = tweetsUserDefaults.objectForKey("NUMOFTIMESOFTWEET")
-        let numOfTweet = numbersOfTweets![randomIndex]
+        let numOfTweet : Int = numbersOfTweets![randomIndex] as! Int
+        let tweet : String = tweets![randomIndex] as! String
+        
+        var logsOfTweet : [String] = [String]()
+        
+        if tweetsUserDefaults.objectForKey(tweet) != nil {
+            logsOfTweet = tweetsUserDefaults.objectForKey(tweet) as! [String]
+            print("logsOfTweet -> \(logsOfTweet)\n\(tweet)")
+            
+        }
+        
+        if logsOfTweet.count <= numOfTweet {
+            print("logsOfTweet.count -> \(logsOfTweet.count)")
+            logsOfTweet.append(string)
+            //keyがtweetだとかぶる可能性がある
+            tweetsUserDefaults.setObject(logsOfTweet, forKey: tweet)
+            print("\(tweets!,randomIndex)")
+            let endPoint = "https://api.twitter.com/1.1/statuses/update.json"
+            let parameters = ["status":"\(tweets![randomIndex])"]
+            let client : TWTRAPIClient = Twitter.sharedInstance().APIClient
+            let request : NSURLRequest = client.URLRequestWithMethod("POST", URL: endPoint, parameters: parameters, error: nil)
+//            client.sendTwitterRequest(request, completion:{ (TWTRNetworkCompletion) -> Void in
+//                // 送信完了
+//            })
+            
+            print("tweeted\(request)")
+            print("tweet : \(parameters)")
+            
+        }
         
         
         
-        print("\(tweets!,randomIndex)")
-        let endPoint = "https://api.twitter.com/1.1/statuses/update.json"
-        let parameters = ["status":"\(tweets![randomIndex])"]
-        let client : TWTRAPIClient = Twitter.sharedInstance().APIClient
-        let request : NSURLRequest = client.URLRequestWithMethod("POST", URL: endPoint, parameters: parameters, error: nil)
-        
-//        client.sendTwitterRequest(request, completion:{ (TWTRNetworkCompletion) -> Void in
-//            // 送信完了
-//        })
-        
-        print("tweeted\(request)")
-        print("tweet : \(parameters)")
+//        print("\(tweets!,randomIndex)")
+//        let endPoint = "https://api.twitter.com/1.1/statuses/update.json"
+//        let parameters = ["status":"\(tweets![randomIndex])"]
+//        let client : TWTRAPIClient = Twitter.sharedInstance().APIClient
+//        let request : NSURLRequest = client.URLRequestWithMethod("POST", URL: endPoint, parameters: parameters, error: nil)
+//        
+//        //        client.sendTwitterRequest(request, completion:{ (TWTRNetworkCompletion) -> Void in
+//        //            // 送信完了
+//        //        })
+//        
+//        print("tweeted\(request)")
+//        print("tweet : \(parameters)")
     }
     
     func isFirstRun() -> Bool {
