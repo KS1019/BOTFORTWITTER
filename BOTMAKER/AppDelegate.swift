@@ -103,7 +103,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if logsOfTweet.count <= numOfTweet {
             print("logsOfTweet.count -> \(logsOfTweet.count)")
             logsOfTweet.append(string)
-            //keyがtweetだとかぶる可能性がある
+            //TODO: Fix -> keyがtweetだとかぶる可能性がある
             tweetsUserDefaults.setObject(logsOfTweet, forKey: tweet)
             print("\(tweets!,randomIndex)")
             let endPoint = "https://api.twitter.com/1.1/statuses/update.json"
