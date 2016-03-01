@@ -25,9 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let termView = TERMViewController()
         let firstrunDateDefaults = NSUserDefaults.standardUserDefaults()
         if termView.didUpdateTerm == true {
-            firstrunDateDefaults.removeObjectForKey("firstRunDate")
-            firstrunDateDefaults.synchronize()
-            print("アップデート後、初回起動だよ")
+            if firstrunDateDefaults.objectForKey("didChecked") == nil {
+                firstrunDateDefaults.removeObjectForKey("firstRunDate")
+                firstrunDateDefaults.setObject(NSDate(), forKey:"didChecked")
+                firstrunDateDefaults.synchronize()
+                print("アップデート後、初回起動だよ")
+            }
         }
         
         if isFirstRun() {
