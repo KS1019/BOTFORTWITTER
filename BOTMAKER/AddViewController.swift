@@ -53,9 +53,7 @@ class AddViewController: UIViewController,UITextViewDelegate,UIPickerViewDelegat
         //ViewをFieldに設定する
         tweetTextView.inputAccessoryView = myKeyboard
         tweetTextView.delegate = self
-        
-        //myTextFieldを追加する 
-        //self.view.addSubview()
+
     }
     
     override func didReceiveMemoryWarning() {

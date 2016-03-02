@@ -33,6 +33,7 @@ class MasterViewController: UITableViewController {
             self.segueTermView()
         }
         addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "segueToAddView")
+        tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -50,13 +51,14 @@ class MasterViewController: UITableViewController {
         //tweetUserDefaultsForCell?.addObserver(self, forKeyPath: "TWEETDATES", options: NSKeyValueObservingOptions.New, context: nil)
         
         if (tweetUserDefaultsForCell?.objectForKey("TWEETTEXTS") != nil) {
-            arrOfNum = tweetUserDefaultsForCell!.objectForKey("NUMOFTIMESOFTWEET")! as! [Int]
-            arrayOfTweetTexts = tweetUserDefaultsForCell!.objectForKey("TWEETTEXTS")!
-            //arrayOfTweetDates = tweetUserDefaultsForCell!.objectForKey("TWEETDATES")!
-            self.tableView.reloadData()
-            
-            print("\(arrayOfTweetTexts,arrOfNum)")
-            
+            if tweetUserDefaultsForCell?.objectForKey("NUMOFTIMESOFTWEET") != nil {
+                arrOfNum = tweetUserDefaultsForCell!.objectForKey("NUMOFTIMESOFTWEET")! as! [Int]
+                arrayOfTweetTexts = tweetUserDefaultsForCell!.objectForKey("TWEETTEXTS")!
+                //arrayOfTweetDates = tweetUserDefaultsForCell!.objectForKey("TWEETDATES")!
+                self.tableView.reloadData()
+                
+                print("\(arrayOfTweetTexts,arrOfNum)")
+            }
         }
         tableView.reloadData()
     }
