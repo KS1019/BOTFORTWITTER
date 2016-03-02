@@ -176,22 +176,6 @@ class MasterViewController: UITableViewController {
         //arrayOfTweetDatesForTweet = (object?.objectForKey("TWEETDATES"))! as! [String]
     }
     
-    // MARK: NSTimer
-    //    func checkTiming(){
-    //        print("checking Timing\(NSDate())")
-    //        let timeNow = NSDate()
-    //
-    //        let formatter = NSDateFormatter()
-    //        formatter.dateFormat = "hh:mm"
-    //        let string:String = formatter.stringFromDate(timeNow)
-    //
-    //        let index = arrayOfTweetDatesForTweet.indexOf(string)
-    //
-    //        if index != nil {
-    //            let tweetText = arrayOfTweetTextsForTweet[index!]
-    //            print("Tweeted\(tweetText,timeNow)")
-    //        }
-    //    }
     
 }
 
