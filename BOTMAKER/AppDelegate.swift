@@ -104,6 +104,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("logsOfTweet.count -> \(logsOfTweet.count)")
             logsOfTweet.append(string)
             //TODO: Fix -> keyがtweetだとかぶる可能性がある
+            //TODO: Fix -> 1日で絶対に三回以上呼ばれる前提になってる。
             tweetsUserDefaults.setObject(logsOfTweet, forKey: tweet)
             print("\(tweets!,randomIndex)")
             let endPoint = "https://api.twitter.com/1.1/statuses/update.json"
