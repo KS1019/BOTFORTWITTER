@@ -76,64 +76,56 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //バックグラウンドでの処理
         let now = NSDate()
         
-        let todayFormatter = NSDateFormatter()
-        todayFormatter.dateFormat = "yyyy/MM/dd"
+        let nowFormatter = NSDateFormatter()
+        nowFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        nowFormatter.dateFormat = "yyyy/MM/dd/HH/mm"
         
-        let string = todayFormatter.stringFromDate(now)
         
-        print("Today -> ",string)
+        let string = nowFormatter.stringFromDate(now)
+        
+        print("now -> ",string)
         completionHandler(UIBackgroundFetchResult.NewData)
         
         
+        
         let tweets = tweetsUserDefaults.objectForKey("TWEETTEXTS")
-        let countOfTweets = tweets?.count
-        let randomIndex = Int(arc4random_uniform(UInt32(countOfTweets!)))
-        let numbersOfTweets = tweetsUserDefaults.objectForKey("NUMOFTIMESOFTWEET")
-        let numOfTweet : Int = numbersOfTweets![randomIndex] as! Int
-        let tweet : String = tweets![randomIndex] as! String
-        
-        var logsOfTweet : [String] = [String]()
-        
-        if tweetsUserDefaults.objectForKey(tweet) != nil {
-            logsOfTweet = tweetsUserDefaults.objectForKey(tweet) as! [String]
-            print("logsOfTweet -> \(logsOfTweet)\n\(tweet)")
+        print("tweets -> \(tweets)")
+        if tweets != nil {
+            let countOfTweets = tweets?.count
+            let randomIndex = Int(arc4random_uniform(UInt32(countOfTweets!)))
+            let numbersOfTweets = tweetsUserDefaults.objectForKey("NUMOFTIMESOFTWEET")
+            let numOfTweet : Int = numbersOfTweets![randomIndex] as! Int
+            let tweet : String = tweets![randomIndex] as! String
+            
+            var logsOfTweet : [String] = [String]()
+            
+            if tweetsUserDefaults.objectForKey(tweet) != nil {
+                logsOfTweet = tweetsUserDefaults.objectForKey(tweet) as! [String]
+                print("logsOfTweet -> \(logsOfTweet)\n\(tweet)")
+                
+            }
+            
+            if logsOfTweet.count <= numOfTweet {
+                print("logsOfTweet.count -> \(logsOfTweet.count)")
+                logsOfTweet.append(string)
+                //TODO: Fix -> keyがtweetだとかぶる可能性がある
+                //TODO: Fix -> 1日で絶対に三回以上呼ばれる前提になってる。
+                tweetsUserDefaults.setObject(logsOfTweet, forKey: tweet)
+                print("\(tweets!,randomIndex)")
+                let endPoint = "https://api.twitter.com/1.1/statuses/update.json"
+                let parameters = ["status":"\(tweets![randomIndex])"]
+                let client : TWTRAPIClient = Twitter.sharedInstance().APIClient
+                let request : NSURLRequest = client.URLRequestWithMethod("POST", URL: endPoint, parameters: parameters, error: nil)
+                //            client.sendTwitterRequest(request, completion:{ (TWTRNetworkCompletion) -> Void in
+                //                // 送信完了
+                //            })
+                
+                print("tweeted\(request)")
+                print("tweet : \(parameters)")
+            }
             
         }
-        
-        if logsOfTweet.count <= numOfTweet {
-            print("logsOfTweet.count -> \(logsOfTweet.count)")
-            logsOfTweet.append(string)
-            //TODO: Fix -> keyがtweetだとかぶる可能性がある
-            //TODO: Fix -> 1日で絶対に三回以上呼ばれる前提になってる。
-            tweetsUserDefaults.setObject(logsOfTweet, forKey: tweet)
-            print("\(tweets!,randomIndex)")
-            let endPoint = "https://api.twitter.com/1.1/statuses/update.json"
-            let parameters = ["status":"\(tweets![randomIndex])"]
-            let client : TWTRAPIClient = Twitter.sharedInstance().APIClient
-            let request : NSURLRequest = client.URLRequestWithMethod("POST", URL: endPoint, parameters: parameters, error: nil)
-//            client.sendTwitterRequest(request, completion:{ (TWTRNetworkCompletion) -> Void in
-//                // 送信完了
-//            })
-            
-            print("tweeted\(request)")
-            print("tweet : \(parameters)")
-            
-        }
-        
-        
-        
-//        print("\(tweets!,randomIndex)")
-//        let endPoint = "https://api.twitter.com/1.1/statuses/update.json"
-//        let parameters = ["status":"\(tweets![randomIndex])"]
-//        let client : TWTRAPIClient = Twitter.sharedInstance().APIClient
-//        let request : NSURLRequest = client.URLRequestWithMethod("POST", URL: endPoint, parameters: parameters, error: nil)
-//        
-//        //        client.sendTwitterRequest(request, completion:{ (TWTRNetworkCompletion) -> Void in
-//        //            // 送信完了
-//        //        })
-//        
-//        print("tweeted\(request)")
-//        print("tweet : \(parameters)")
+
     }
     
     func isFirstRun() -> Bool {
