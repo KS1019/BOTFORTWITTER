@@ -80,17 +80,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         nowFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
         nowFormatter.dateFormat = "yyyy/MM/dd/HH/mm"
         
+        let dayFormatter = NSDateFormatter()
+        dayFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        dayFormatter.dateFormat = "yyyy/MM/dd"
         
         let string = nowFormatter.stringFromDate(now)
         
         print("now -> ",string)
         completionHandler(UIBackgroundFetchResult.NewData)
         
-        
-        
         let tweets = tweetsUserDefaults.objectForKey("TWEETTEXTS")
         print("tweets -> \(tweets)")
-        if tweets != nil {
+        if tweets?.count > 0 {
             let countOfTweets = tweets?.count
             let randomIndex = Int(arc4random_uniform(UInt32(countOfTweets!)))
             let numbersOfTweets = tweetsUserDefaults.objectForKey("NUMOFTIMESOFTWEET")
@@ -98,12 +99,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let tweet : String = tweets![randomIndex] as! String
             
             var logsOfTweet : [String] = [String]()
-            
             if tweetsUserDefaults.objectForKey(tweet) != nil {
                 logsOfTweet = tweetsUserDefaults.objectForKey(tweet) as! [String]
                 print("logsOfTweet -> \(logsOfTweet)\n\(tweet)")
                 
             }
+            
+            let lastLog = logsOfTweet.last
+            print("lastLog -> \(lastLog)")
+            let stringLastLog : NSMutableString = NSMutableString(string: dayFormatter.stringFromDate(now))
+            //stringLastLog.deleteCharactersInRange(NSRange(location: , length: ))
             
             if logsOfTweet.count <= numOfTweet {
                 print("logsOfTweet.count -> \(logsOfTweet.count)")
