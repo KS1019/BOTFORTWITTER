@@ -78,7 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let nowFormatter = NSDateFormatter()
         nowFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-        nowFormatter.dateFormat = "yyyy/MM/dd/HH/mm"
+        nowFormatter.dateFormat = "HH"
         
         let dayFormatter = NSDateFormatter()
         dayFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
@@ -98,39 +98,58 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let numOfTweet : Int = numbersOfTweets![randomIndex] as! Int
             let tweet : String = tweets![randomIndex] as! String
             
-            var logsOfTweet : [String] = [String]()
+            var logsOfTweet : [NSDate] = [NSDate]()
             if tweetsUserDefaults.objectForKey(tweet) != nil {
-                logsOfTweet = tweetsUserDefaults.objectForKey(tweet) as! [String]
+                logsOfTweet = tweetsUserDefaults.objectForKey(tweet) as! [NSDate]
                 print("logsOfTweet -> \(logsOfTweet)\n\(tweet)")
                 
             }
-            
-            let lastLog = logsOfTweet.last
+            var lastLog : NSDate!
+            if logsOfTweet.last == nil {
+                print("最後は今")
+                lastLog = now
+            }else{
+                print("最後は最後")
+                lastLog = logsOfTweet.last
+            }
             print("lastLog -> \(lastLog)")
-            let stringLastLog : NSMutableString = NSMutableString(string: dayFormatter.stringFromDate(now))
-            //stringLastLog.deleteCharactersInRange(NSRange(location: , length: ))
+            let stringLastLog = dayFormatter.stringFromDate(lastLog)
+            let stringNow = dayFormatter.stringFromDate(now)
             
-            if logsOfTweet.count <= numOfTweet {
-                print("logsOfTweet.count -> \(logsOfTweet.count)")
-                logsOfTweet.append(string)
-                //TODO: Fix -> keyがtweetだとかぶる可能性がある
-                //TODO: Fix -> 1日で絶対に三回以上呼ばれる前提になってる。
-                tweetsUserDefaults.setObject(logsOfTweet, forKey: tweet)
-                print("\(tweets!,randomIndex)")
-                let endPoint = "https://api.twitter.com/1.1/statuses/update.json"
-                let parameters = ["status":"\(tweets![randomIndex])"]
-                let client : TWTRAPIClient = Twitter.sharedInstance().APIClient
-                let request : NSURLRequest = client.URLRequestWithMethod("POST", URL: endPoint, parameters: parameters, error: nil)
-                //            client.sendTwitterRequest(request, completion:{ (TWTRNetworkCompletion) -> Void in
-                //                // 送信完了
-                //            })
+            if stringLastLog != stringNow {
+                print("日付変わってるよ")
+                logsOfTweet.removeAll()
+                logsOfTweet.append(now)
+            }
+            
+            let timeLastLog : String = nowFormatter.stringFromDate(lastLog!)
+            let timeNow : String = nowFormatter.stringFromDate(now)
+            print("最後のログ -> \(timeLastLog) 今のログ -> \(timeNow)")
+            
+            if Int(timeLastLog)! + 3 <= Int(timeNow)! {
                 
-                print("tweeted\(request)")
-                print("tweet : \(parameters)")
+                if logsOfTweet.count <= numOfTweet {
+                    print("logsOfTweet.count -> \(logsOfTweet.count)")
+                    logsOfTweet.append(now)
+                    //TODO: Fix -> keyがtweetだとかぶる可能性がある
+                    //TODO: Fix -> 1日で絶対に三回以上呼ばれる前提になってる。
+                    tweetsUserDefaults.setObject(logsOfTweet, forKey: tweet)
+                    print("\(tweets!,randomIndex)")
+                    let endPoint = "https://api.twitter.com/1.1/statuses/update.json"
+                    let parameters = ["status":"\(tweets![randomIndex])"]
+                    let client : TWTRAPIClient = Twitter.sharedInstance().APIClient
+                    let request : NSURLRequest = client.URLRequestWithMethod("POST", URL: endPoint, parameters: parameters, error: nil)
+                    client.sendTwitterRequest(request, completion:{ (TWTRNetworkCompletion) -> Void in
+                        // 送信完了
+                    })
+                    
+                    print("tweeted\(request)")
+                    print("tweet : \(parameters)")
+                }
             }
             
         }
-
+        
     }
     
     func isFirstRun() -> Bool {
