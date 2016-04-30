@@ -47,20 +47,28 @@ class MasterViewController: UITableViewController {
         self.login()
         
         let tweetUserDefaultsForCell:NSUserDefaults? = NSUserDefaults.standardUserDefaults()
-        tweetUserDefaultsForCell?.addObserver(self, forKeyPath: "TWEETTEXTS", options: NSKeyValueObservingOptions.New, context: nil)
+        tweetUserDefaultsForCell!.addObserver(self, forKeyPath: "TWEETTEXTS", options: NSKeyValueObservingOptions.New, context: nil)
         //tweetUserDefaultsForCell?.addObserver(self, forKeyPath: "TWEETDATES", options: NSKeyValueObservingOptions.New, context: nil)
+        let a = tweetUserDefaultsForCell!.objectForKey("TWEETTEXTS")
+        print(a)
+        let b = tweetUserDefaultsForCell
+        print(b)
         
-        if (tweetUserDefaultsForCell?.objectForKey("TWEETTEXTS") != nil) {
-            if tweetUserDefaultsForCell?.objectForKey("NUMOFTIMESOFTWEET") != nil {
+//        let className = NSStringFromClass(.dynamicType).componentsSeparatedByString(".").last! as String
+        //        println("\(className)")
+        if (tweetUserDefaultsForCell!.objectForKey("TWEETTEXTS") != nil) {
+            if tweetUserDefaultsForCell!.objectForKey("NUMOFTIMESOFTWEET") != nil {
                 arrOfNum = tweetUserDefaultsForCell!.objectForKey("NUMOFTIMESOFTWEET")! as! [Int]
                 arrayOfTweetTexts = tweetUserDefaultsForCell!.objectForKey("TWEETTEXTS")!
                 //arrayOfTweetDates = tweetUserDefaultsForCell!.objectForKey("TWEETDATES")!
                 self.tableView.reloadData()
                 
                 print("\(arrayOfTweetTexts,arrOfNum)")
+                print("現在値 -> \(tweetUserDefaultsForCell!.objectForKey("NUMOFTIMESOFTWEET")!,tweetUserDefaultsForCell!.objectForKey("TWEETTEXTS") as! [String])")
             }
         }
         tableView.reloadData()
+        
     }
     
     @IBAction func touchedSettings(){
@@ -126,7 +134,9 @@ class MasterViewController: UITableViewController {
                 //                tweetDatesArr?.removeAtIndex(indexPath.row)
                 //                arrayOfTweetDates = tweetDatesArr!
                 var numberOfTimesOfTweet = arrOfNum
+                print("arrOfNum -> \(arrOfNum)")
                 numberOfTimesOfTweet.removeAtIndex(indexPath.row)
+                print("削除後 -> \(numberOfTimesOfTweet)")
                 
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
                 

@@ -45,6 +45,8 @@ class LoginViewController: UIViewController {
     }
     
     func setLoginButton() {
+        userInfoBackground.backgroundColor = Colors.TwitterBackgroundBlue
+        self.view.backgroundColor = Colors.TwitterBackgroundBlue
         let loginButton = TWTRLogInButton(logInCompletion: {
             session, error in
             let userSession = session
@@ -103,6 +105,7 @@ class LoginViewController: UIViewController {
     }
     
     func setUserInfo() {
+        userInfoBackground.backgroundColor = UIColor.whiteColor()
         userInfoBackground.layer.cornerRadius = 5
         self.view.sendSubviewToBack(userInfoBackground)
         userImageView.layer.masksToBounds = true
