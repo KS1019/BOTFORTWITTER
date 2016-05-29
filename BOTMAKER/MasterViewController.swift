@@ -26,6 +26,7 @@ class MasterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print(__FILE__,__FUNCTION__)
+        tableView.layoutMargins = UIEdgeInsetsZero
         //let termView = TERMViewController()
         let userDefaults = NSUserDefaults.standardUserDefaults()
         if userDefaults.objectForKey("hasAgreed") as! Bool != true {
@@ -71,6 +72,11 @@ class MasterViewController: UITableViewController {
         
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView.layoutMargins = UIEdgeInsetsZero
+    }
+    
     @IBAction func touchedSettings(){
         
         if isLogin() {
@@ -90,10 +96,10 @@ class MasterViewController: UITableViewController {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 //let time = arrayOfTweetDates[indexPath.row] // TODO: -repair
                 let text : String = arrayOfTweetTexts[indexPath.row] as! String
-                let numOfTweet : Int = arrOfNum[indexPath.row]
+                //let numOfTweet : Int = arrOfNum[indexPath.row]
                 //(segue.destinationViewController as! DetailViewController).detailItem = time
                 (segue.destinationViewController as! DetailViewController).tweetText = text
-                (segue.destinationViewController as! DetailViewController).numberOfTweet = numOfTweet
+                //(segue.destinationViewController as! DetailViewController).numberOfTweet = numOfTweet
             }
         }
     }
@@ -117,6 +123,7 @@ class MasterViewController: UITableViewController {
         
         let object = arrayOfTweetTexts[indexPath.row] as! String
         cell.textLabel!.text = object
+        cell.layoutMargins = UIEdgeInsetsZero
         return cell
     }
     
@@ -133,20 +140,20 @@ class MasterViewController: UITableViewController {
                 //                var tweetDatesArr = arrayOfTweetDates as? Array<AnyObject>
                 //                tweetDatesArr?.removeAtIndex(indexPath.row)
                 //                arrayOfTweetDates = tweetDatesArr!
-                var numberOfTimesOfTweet = arrOfNum
-                print("arrOfNum -> \(arrOfNum)")
-                numberOfTimesOfTweet.removeAtIndex(indexPath.row)
-                print("削除後 -> \(numberOfTimesOfTweet)")
+                //var numberOfTimesOfTweet = arrOfNum
+                //print("arrOfNum -> \(arrOfNum)")
+                //numberOfTimesOfTweet.removeAtIndex(indexPath.row)
+                //print("削除後 -> \(numberOfTimesOfTweet)")
                 
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
                 
                 let tweetsDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-                tweetsDefaults.setObject(numberOfTimesOfTweet, forKey: "NUMOFTIMESOFTWEET")
+                //tweetsDefaults.setObject(numberOfTimesOfTweet, forKey: "NUMOFTIMESOFTWEET")
                 tweetsDefaults.setObject(arrayOfTweetTexts, forKey: "TWEETTEXTS")
                 //tweetsDefaults.setObject(arrayOfTweetDates, forKey: "TWEETDATES")
                 tweetsDefaults.synchronize()
                 
-                print("\(arrayOfTweetTexts,numberOfTimesOfTweet)")
+                //print("\(arrayOfTweetTexts,numberOfTimesOfTweet)")
             }
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.

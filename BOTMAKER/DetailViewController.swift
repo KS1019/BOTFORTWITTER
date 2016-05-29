@@ -49,7 +49,7 @@ class DetailViewController: UIViewController,UITextViewDelegate {
         self.tweetTextConfigureView()
         //let defaults = NSUserDefaults.standardUserDefaults()
         print("text -> \(tweetText!)")
-        print("NumOfTimes -> \(numberOfTweet + 1)")
+        //print("NumOfTimes -> \(numberOfTweet + 1)")
         self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
         
 //        tweetDatePicker.datePickerMode = UIDatePickerMode.DateAndTime
